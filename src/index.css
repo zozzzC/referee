@@ -38,4 +38,32 @@ h1 {
   font-size: 30px;
 }
 
+.home { 
+  flex: auto;
+  color:rgb(59, 59, 59);
+  text-align: center;
+}
 
+.home p { 
+}
+
+.commissionStatus {
+  align-content: center;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.commissionStatus h1 { 
+  font-size: 15px;
+  flex: auto;
+  display: inline;
+}
+
+.commissionStatus p { 
+  display: inline;
+}
+
+.lastUpdated p {
+  display: inline;
+}
