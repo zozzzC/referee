@@ -6,12 +6,6 @@ const commDate = "march 20, 2024"
 const updateDate = "march 19, 2024"
 
 
-const applyButton = () => { 
-    
-}
-
-
-
 const Homepage = () => {
     return (
     <div className="Homepage">
@@ -34,8 +28,10 @@ const Homepage = () => {
                 <p>last updated: </p>
                 <p>{ updateDate }</p>
             </div>
-            <button onClick={ }>apply now!</button>
-        </div>
+            <Link to ="/contact">
+                <button>apply now!</button>
+            </Link>
+       </div>
         </div>
     </div>
         
