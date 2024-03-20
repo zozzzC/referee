@@ -1,12 +1,26 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
+
+const commState = "open"
+const commDate = "march 20, 2024"
+const updateDate = "march 19, 2024"
 
 
-const Home = () => {
-    const commState = "open"
-    const commDate = "march 20, 2024"
-    const updateDate = "march 19, 2024"
-    return ( 
+const applyButton = () => { 
+    
+}
+
+
+
+const Homepage = () => {
+    return (
+    <div className="Homepage">
+        
+        <div>
+            <Navbar />
         <div className="home">
+            <div className="home-carousel">
+            </div>
             <p>hello, i'm zozchuu! i am a CS major and hobbyist artist.</p>
             <div className = "commissionStatus">
                 <p>commissions status: </p>
@@ -20,9 +34,13 @@ const Home = () => {
                 <p>last updated: </p>
                 <p>{ updateDate }</p>
             </div>
-            <button>apply now!</button>
+            <button onClick={ }>apply now!</button>
         </div>
-    );
+        </div>
+    </div>
+        
+     );
 }
-
-export default Home;
+ 
+export default Homepage
+;

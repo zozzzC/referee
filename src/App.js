@@ -1,15 +1,14 @@
 import React from 'react';
-import Navbar from './Navbar';
-import homecarousel from './homecarousel';
-import Home from './Home';
+import Navbar from './components/Navbar';
+import homecarousel from './components/homecarousel'
+import Homepage from './pages/Home'
+
 import './index.css'
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div>
-    <Navbar />
-    <Home />
-    </div>
+    <Homepage />
   );
 }
 
