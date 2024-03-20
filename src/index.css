@@ -19,7 +19,7 @@
   text-align: center;
 }
 
-.navlinks a {
+.link-styles {
   display: inline-block;
   transition: all .2s ease-in;
   margin: 30px;
@@ -27,7 +27,7 @@
   text-decoration: none;
 }
 
-.navlinks :hover { 
+.link-styles :hover { 
   color:rgb(38, 38, 38);
 }
 

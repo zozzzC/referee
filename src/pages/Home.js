@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 
+
 const commState = "open"
 const commDate = "march 20, 2024"
 const updateDate = "march 19, 2024"
@@ -28,9 +29,7 @@ const Homepage = () => {
                 <p>last updated: </p>
                 <p>{ updateDate }</p>
             </div>
-            <Link to ="/contact">
-                <button>apply now!</button>
-            </Link>
+            <button>apply now!</button>
        </div>
         </div>
     </div>
