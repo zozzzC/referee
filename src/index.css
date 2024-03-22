@@ -27,7 +27,7 @@
   text-decoration: none;
 }
 
-.link-styles :hover { 
+.link-styles:hover { 
   color:rgb(38, 38, 38);
 }
 
