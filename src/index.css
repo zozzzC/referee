@@ -31,7 +31,7 @@
   color:rgb(38, 38, 38);
 }
 
-h1 { 
+.home h1 { 
   margin-top: 20px;
   margin-bottom: 0px;
   display: inline-block;
@@ -44,9 +44,6 @@ h1 {
   text-align: center;
 }
 
-.home p { 
-  
-}
 
 .commissionStatus {
   align-content: center;
@@ -67,4 +64,23 @@ h1 {
 
 .lastUpdated p {
   display: inline;
+}
+
+/* fix issue where .blog and .blog-item css wont load to blog*/
+
+.blog { 
+
+}
+
+.blog-item {
+  margin: 30px;
+  flex: auto;
+
+  outline: 1px solid black;
+}
+
+
+.blog-item p { 
+  display: inline-block;
+  outline: 1px solid black;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../index.css';
 import Navbar from '../components/Navbar';
 
 
@@ -14,8 +15,6 @@ const Homepage = () => {
         <div>
             <Navbar />
         <div className="home">
-            <div className="home-carousel">
-            </div>
             <p>hello, i'm zozchuu! i am a CS major and hobbyist artist.</p>
             <div className = "commissionStatus">
                 <p>commissions status: </p>
