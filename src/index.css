@@ -41,13 +41,18 @@
 .home { 
   flex: auto;
   color:rgb(59, 59, 59);
-  text-align: center;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 
 .commissionStatus {
   align-content: center;
-  text-align: center;
+  text-align: left;
   margin-top: 20px;
   margin-bottom: 30px;
 }
@@ -74,7 +79,6 @@
 .blog-item {
   margin: 30px;
   flex: auto;
-
   outline: 1px solid black;
 }
 
@@ -82,4 +86,36 @@
 .blog-item p { 
   display: inline-block;
   outline: 1px solid black;
+}
+
+/* home info and home-pfp are in the same flex div*/
+
+.home-info { 
+  flex: auto;
+  display: inline-block;
+  text-align: left;
+  margin-right: 5%;
+}
+
+.home-pfp {
+  flex: auto; /*allow it to move right and leftwise, without being treated as a block element*/
+  text-align: right;
+}
+
+.home img { 
+  height: 210px;
+  margin-left: 5%;
+  margin-right: 10px;
+}
+
+.home-info button {
+  border-radius: 8px;
+  border: none;
+  margin-top: 20px;
+  padding: 10px 32px; /*width height*/
+  transition: all .1s ease-in;
+}
+
+.home-info button:hover{
+  background-color:rgb(223, 223, 223);
 }
