@@ -8,3 +8,4 @@ Trialling single-user only (for me), might try something cooler later on
 ## Future Plans
 - Add Stripe Payments API 
 - Add User Logon
+- Add Artist Panels
