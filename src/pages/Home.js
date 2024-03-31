@@ -1,53 +1,49 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../index.css';
-import Navbar from '../components/Navbar';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../index.css";
+import Navbar from "../components/Navbar";
+import Carousel from "../components/Carousel";
 
+const commState = "open";
+const commDate = "march 20, 2024";
+const updateDate = "march 19, 2024";
 
-const commState = "open"
-const commDate = "march 20, 2024"
-const updateDate = "march 19, 2024"
+let commButton = "apply now!";
 
-
+if (commState === "closed") {
+  commButton = "check prices!";
+}
 
 const Homepage = () => {
+  const navi = useNavigate();
 
-    const navi = useNavigate();
+  const apply = () => {
+    navi("/pricelist");
+  };
 
-    const apply = () => {
-        navi("/pricelist"); 
-    }
-
-    return (
+  return (
     <div className="Homepage">
-        <div>
-            <Navbar />
+      <div>
+        <Navbar />
+        <Carousel />
         <div className="home">
-            <div className="home-pfp">
-                <img src={require('../assets/images/zozchuupfp.png')} alt ="zozchuu-pfp"/>
+          <div className="home-pfp">
+            <img src={require("../images/zozchuupfp.png")} alt="zozchuu-pfp" />
+          </div>
+          <div className="home-info">
+            <div className="home-info-txt">
+              <p>hello, i'm zozchuu! i am a CS major and hobbyist artist.</p>
+              <p>commissions status: {commState}</p>
+              <p>intake: {commDate}</p>
+              <p>last updated: {updateDate}</p>
             </div>
-            <div className="home-info">
-                <p>hello, i'm zozchuu! i am a CS major and hobbyist artist.</p>
-                <div className = "commissionStatus">
-                    <p>commissions status: </p>
-                    <p>{commState}</p>
-                </div>
-                <div className = "commissionStatus">
-                <p>intake: </p>
-                    <p>{commDate}</p>
-                </div>
-                <div className = "lastUpdated">
-                    <p>last updated: </p>
-                    <p>{ updateDate }</p>
-                </div>
-                <button onClick={apply}> apply now!</button>
-                </div>
-       </div>
+
+            <button onClick={apply}> {commButton} </button>
+          </div>
         </div>
+      </div>
     </div>
-        
-     );
-}
- 
-export default Homepage
-;
+  );
+};
+
+export default Homepage;

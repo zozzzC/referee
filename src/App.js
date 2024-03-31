@@ -1,7 +1,4 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import homecarousel from './components/homecarousel'
-import Homepage from './pages/Home'
 import { HashRouter as Router, Routes, Route} from 'react-router-dom'
 import './index.css'
 import Home from './pages/Home';
