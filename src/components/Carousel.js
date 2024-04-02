@@ -1,9 +1,11 @@
 import React from "react";
 import CarouselImg from "./CarouselImg";
 import "../index.css";
-import img from "../images/meteor-shower.png";
+import { useState } from "react";
 
 const Carousel = () => {
+  const [index, setIndex] = useState(0);
+
   const displayImg = [
     {
       key: 1,
@@ -27,13 +29,16 @@ const Carousel = () => {
 
   return (
     <div className="carousel">
-      {displayImg.map((indivImg) => (
-        <CarouselImg
-          key={indivImg.key}
-          src={indivImg.route}
-          desc={indivImg.desc}
-        />
-      ))}
+      <div className="carImg">
+        {displayImg.map((indivImg) => (
+          <CarouselImg
+            key={indivImg.key}
+            src={indivImg.route}
+            desc={indivImg.desc}
+          />
+        ))}
+      </div>
+      <div className="carousel-button"></div>
     </div>
   );
 };
