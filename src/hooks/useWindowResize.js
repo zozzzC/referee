@@ -1,31 +1,29 @@
 import React from "react";
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
+const maxHamburgerSize = 600; //max width of page for hamburger button to be used/appear
+
+const getIsMobile = () => {
+  if (window.innerWidth < maxHamburgerSize) {
+    return true;
+  } else {
+    return false;
+  }
+};
 
 export default function useWindowSize() {
-  const minHamburgerSize = 600;
-  const [sizeMobile, setSizeMobile] = useState(true);
-
-  setSizeMobile(() => {
-    if (window.innerWidth < minHamburgerSize) {
-      return true;
-    } else {
-      return false;
-    }
-  });
+  const [sizeMobile, setSizeMobile] = useState(getIsMobile());
 
   useEffect(() => {
-    console.log("window size: " + window.innerWidth);
     const onResize = () => {
-      setSizeMobile();
+      setSizeMobile(getIsMobile());
     };
 
-    window.addEventListener("resize", onResize());
+    window.addEventListener("resize", onResize);
 
     return () => {
-      window.removeEventListener("resize");
+      window.removeEventListener("resize", onResize);
     };
-
-    console.log("sizeMobile " + sizeMobile);
   }, []);
 
   return sizeMobile;
