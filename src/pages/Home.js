@@ -4,6 +4,8 @@ import "../index.css";
 import Navbar from "../components/Navbar";
 import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
+import useWindowSize from "../hooks/useWindowResize";
+import Hamburger from "../components/Hamburger";
 
 const commState = "open";
 const commDate = "march 20, 2024";
@@ -22,11 +24,22 @@ const Homepage = () => {
     navi("/pricelist");
   };
 
+  //TODO: fix conditional rendering--right now it is causing too many rerenders
+  function Mobile() {
+    const isMobile = useWindowSize();
+    console.log("mobile is running, state of isMobile: " + isMobile);
+    if (isMobile == true) {
+      return <Navbar />;
+    } else {
+      return <Hamburger />;
+    }
+  }
+
   return (
     <div className="Homepage">
       <div>
-        <Navbar />
         <Carousel />
+        <Mobile />
         <div className="home">
           <div className="home-left">
             <div className="home-pfp">
