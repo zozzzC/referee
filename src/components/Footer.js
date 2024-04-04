@@ -6,9 +6,9 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="footer-items">
-        <p>zozzchu</p>
+        <p>zozchuu</p>
         <p>zozchuu@gmail.com</p>
-        <p>all rights reserved</p>
+        <p>2024 all rights reserved</p>
       </div>
       <div className="footer-socials"></div>
     </div>

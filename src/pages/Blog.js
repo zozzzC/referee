@@ -2,7 +2,7 @@ import { useState } from "react";
 import BlogItem from "../components/BlogItem";
 import React from "react";
 import "../index.css";
-import Navbar from "../components/Navbar";
+import Mobile from "../components/Mobile";
 
 const Blog = () => {
   const [blog, deleteBlog] = useState([
@@ -13,7 +13,7 @@ const Blog = () => {
 
   return (
     <div className="Blog">
-      <Navbar />
+      <Mobile />
       {blog.map((indivBlog) => (
         <BlogItem Title={indivBlog.title} Description={indivBlog.description} />
       ))}
