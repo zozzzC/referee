@@ -7,10 +7,6 @@ import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
 const Carousel = () => {
   const [index, setIndex] = useState(0);
 
-  useEffect(() => {
-    console.log("index changed");
-  }, [index]);
-
   const displayImg = [
     {
       key: 0,

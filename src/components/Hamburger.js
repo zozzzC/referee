@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Menu } from "lucide-react";
 
 const Hamburger = () => {
   const [openHamburger, isOpenHamburger] = useState(false);
@@ -7,7 +8,9 @@ const Hamburger = () => {
   return (
     <div className="hamburger">
       <h1>zozchuu</h1>
-      <div className="hamburger-icon"></div>
+      <button>
+        <Menu />
+      </button>
       <div className="hamburger-list-items"></div>
     </div>
   );

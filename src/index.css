@@ -115,6 +115,10 @@
   margin-left: 5%;
 }
 
+.home { 
+  margin: 10px;
+}
+
 .home-info button {
   flex: auto;
   display: inline-block;
@@ -180,7 +184,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 30px;
+  margin-left: 25px;
 }
 
 .home-left { 
@@ -204,3 +208,48 @@
 .hamburger-icon { 
 
 }
+
+.carousel-button { 
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: -210px;
+}
+
+button { 
+  border: none;
+  margin: none;
+}
+
+.carousel-button button { 
+  background-color: transparent;
+}
+
+.carousel-button button:hover { 
+  cursor: pointer;
+}
+
+.hamburger h1 { 
+  display: inline-flex;
+}
+
+.hamburger { 
+  flex: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hamburger button { 
+  margin-top: 4px;
+  background-color: transparent;
+}
+
+.hamburger button:hover { 
+  cursor: pointer;
+}
+
+.lucide {
+  color:rgb(80, 80, 80); 
+  border: none;
+}
+
