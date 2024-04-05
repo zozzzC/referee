@@ -22,7 +22,6 @@ const Homepage = () => {
   };
 
   const mobile = Mobile();
-  //TODO: fix conditional rendering--right now it is causing too many rerenders
 
   return (
     <div className="Homepage">

@@ -3,6 +3,7 @@ import BlogItem from "../components/BlogItem";
 import React from "react";
 import "../index.css";
 import Mobile from "../components/Mobile";
+import { CirclePlus } from "lucide-react";
 
 const Blog = () => {
   const [blog, deleteBlog] = useState([
@@ -14,9 +15,15 @@ const Blog = () => {
   return (
     <div className="Blog">
       <Mobile />
-      {blog.map((indivBlog) => (
-        <BlogItem Title={indivBlog.title} Description={indivBlog.description} />
-      ))}
+      <div>
+        <CirclePlus />
+        {blog.map((indivBlog) => (
+          <BlogItem
+            Title={indivBlog.title}
+            Description={indivBlog.description}
+          />
+        ))}
+      </div>
     </div>
   );
 };
