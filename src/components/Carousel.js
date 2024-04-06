@@ -6,16 +6,9 @@ import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
 
 const Carousel = () => {
   const [index, setIndex] = useState(0);
+  const [fadeOut, setFadeOut] = useState(false);
+  const [style, setStyle] = useState();
   const ref = useRef(0);
-  const lastStyle = ref;
-
-  //fix issue where the animation doesnt seem to work?
-  // useEffect(() => {
-  //   //each time the index changes we have to fade in the new index image, so give the new index image a css class for fading in.
-  //   console.log("ref is " + ref.current);
-  //   ref.current.style.animation = "fadeOut 1.2s";
-  //   console.log("fadeout");
-  // }, [index]);
 
   const displayImg = [
     {
@@ -41,43 +34,43 @@ const Carousel = () => {
     },
   ];
 
+  //TODO: change from useRef to another state instead
   function moveRight() {
-    //fix issue where fading keeps jumping backwards and forwards
-    //find a way to save the previous ref and remove the ref from that element
-    setInterval(() => {
+    setStyle({ animation: "fadeOut 1.3s" });
+    setTimeout(() => {
+      console.log("sI running");
       if (index == displayImg.length - 1) {
         setIndex(0);
       } else {
         setIndex(index + 1);
       }
+      setStyle({ animation: "fadeIn 1.3s" });
     }, 1000);
-    ref.current.style.animation = "fadeOut 1.3s";
-    console.log("fading between images now");
   }
 
+  //TODO: change from useRef to another state instead
   function moveLeft() {
-    setInterval(() => {
+    setStyle({ animation: "fadeOut 1.3s" });
+    setTimeout(() => {
       if (index == 0) {
         setIndex(displayImg.length - 1);
       } else {
         setIndex(index - 1);
       }
+      setStyle({ animation: "fadeIn 1.3s" });
     }, 1000);
-    ref.current.style.animation = "fadeOut 1.3s";
-    console.log(index);
+    //the ref has now changed as we rerendered using setIndex, now the new image is the old image
   }
-
-  //make sure that images are in the public folder, all assets must be in the public folder for us to properly reference!
 
   return (
     <div className="carousel">
       <div className="carImg">
         <CarouselImg
-          //TODO: add fading between images (probably have to forward a ref to add a class into the previous ref?)
+          //TODO: add fading between images (probably have to forward a ref to reference the image tag in the component)
           key={displayImg[index].key}
           src={displayImg[index].route}
           desc={displayImg[index].desc}
-          ref={ref}
+          style={style}
         />
       </div>
       <div className="carousel-button">
