@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import PortfolioImg from "../components/PortfolioImages";
 import Masonry from "react-responsive-masonry";
 import ImagePopup from "../components/ImagePopup";
+import { useRef, useState } from "react";
 
 const Portfolio = () => {
   //later, instead of importing everything like this, there may be get request that gets image URLs from a server
@@ -50,12 +51,37 @@ const Portfolio = () => {
   } else if (isSmall == true) {
     columnsCount = 3;
   }
+
+  const [imagePopup, setImagePopup] = useState(null);
+  let imagePopupSrc = useRef("");
+  let imagePopupDesc = useRef("");
+
+  function showImagePopup(imageIndex) {
+    //first we want to set the image popup props, the values of the source image, etc.
+    //props is going to be the value of the index in displayimg
+    imagePopupSrc.current = displayImg[imageIndex]["route"];
+    imagePopupDesc.current = displayImg[imageIndex]["desc"];
+    setImagePopup(true);
+  }
+
   return (
     <div className="portfolio">
+      {imagePopup ? (
+        <ImagePopup
+          src={imagePopupSrc.current}
+          desc={imagePopupDesc.current}
+          imgPopupState={setImagePopup}
+        />
+      ) : null}
       <Mobile />
       <Masonry columnsCount={columnsCount} gutter="10px">
-        {displayImg.map((img) => (
-          <PortfolioImg id={img.id} route={img.route} desc={img.desc} />
+        {displayImg.map((img, index) => (
+          <PortfolioImg
+            index={index}
+            route={img.route}
+            desc={img.desc}
+            setImagePopup={showImagePopup}
+          />
         ))}
       </Masonry>
       <Footer />

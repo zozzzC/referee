@@ -25,4 +25,25 @@
     border: none;
     margin: none;
   }
-  
+
+.image-popup-item { 
+  display: flex;
+  height:90%;
+  padding: 10px 10px 10px 10px;
+  margin: auto;
+  outline: 1px solid black;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-popup-item img {
+  justify-content: center;
+  border-radius: 10px;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+ } 
+
+ .image-popup-item h1 { 
+  display: block;
+ }
