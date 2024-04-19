@@ -50,7 +50,7 @@ const Homepage = () => {
           <div className="home-right">
             <div className="home-info">
               <div className="home-info-txt">
-                <p>hello, i'm zozchuu! i am a CS major and hobbyist artist.</p>
+                <p>hello, i'm NAME! i am a CS major and hobbyist artist.</p>
                 <p>commissions status: {commState}</p>
                 <p>intake: {commDate}</p>
                 <p>last updated: {updateDate}</p>

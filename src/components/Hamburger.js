@@ -7,7 +7,7 @@ const Hamburger = () => {
 
   return (
     <div className="hamburger">
-      <h1>zozchuu</h1>
+      <h1>NAME</h1>
       <button>
         <Menu />
       </button>

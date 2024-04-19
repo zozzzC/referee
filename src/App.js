@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import Portfolio from "./pages/Portfolio";
+import Pricelist from "./pages/Pricelist";
 import useWindowSize from "./hooks/useWindowResize";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/pricelist" element={<Pricelist />} />
         </Routes>
       </Router>
     </div>

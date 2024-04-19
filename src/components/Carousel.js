@@ -6,7 +6,6 @@ import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
 
 const Carousel = () => {
   const [index, setIndex] = useState(0);
-  const [fadeOut, setFadeOut] = useState(false);
   const [style, setStyle] = useState();
   const ref = useRef(0);
 

@@ -4,7 +4,7 @@ import Hamburger from "../components/Hamburger";
 import Navbar from "../components/Navbar";
 
 const Mobile = () => {
-  const isMobile = useWindowSize();
+  const isMobile = useWindowSize({ size: 750 });
   if (isMobile == true) {
     return <Hamburger />;
   } else {

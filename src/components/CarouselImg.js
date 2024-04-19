@@ -1,6 +1,5 @@
 import React from "react";
 import "../index.css";
-import { forwardRef } from "react";
 
 const CarouselImg = (props) => {
   return (

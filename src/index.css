@@ -75,10 +75,6 @@
 }
 
 
-.blog { 
-
-}
-
 .blog-item {
   margin: 30px;
   flex: auto;
@@ -168,6 +164,8 @@
   background-color: rgb(59, 59, 59);
   margin-top: 50px;
   align-items: center;
+  /* position: fixed; */
+  bottom: 0;
 }
 
 .footer-items { 

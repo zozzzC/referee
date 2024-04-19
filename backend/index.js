@@ -26,5 +26,10 @@ const server = app.listen(port, () => {
 });
 
 app.get("/", (req, res) => {
-  console.log("get request!");
+  console.log("get request to default page successful");
+});
+
+//probably need to make this my own route
+app.get("/commission-status", (req, res) => {
+  //make a request to mongodb, getting values
 });

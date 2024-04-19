@@ -6,7 +6,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <h1>zozchuu</h1>
+      <h1>NAME</h1>
       <div className="navlinks">
         <Link className="link-styles" to="/">
           Home
