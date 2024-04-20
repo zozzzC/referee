@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
+const cookie = require("cookie-parser");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 
