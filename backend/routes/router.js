@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/users", (req, res) => {
-  res.send("got users");
-});
+//routes
+const commissionStates = require("./commission-status.js");
+
+router.use("/commission-status", commissionStates);
 
 module.exports = router;

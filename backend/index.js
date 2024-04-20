@@ -1,6 +1,10 @@
 const express = require("express");
 const cors = require("cors");
+const session = require("express-session");
 const bodyParser = require("body-parser");
+const passport = require("passport");
+
+//router
 const router = require("./routes/router");
 
 const app = express();
@@ -18,18 +22,16 @@ app.use(express.static("public"));
 app.use(cors(corsOptions));
 app.use("/", router);
 
-const port = 4000;
+app.use(passport.initialize());
+app.listen(passport.session());
 
-//4000 is backend port as per above--the frontend is 3000, but 3000 will presumably send http requests to the backend (port 4000)
+const port = 8080;
+
+//8080 is backend port as per above--the frontend is 3000, but 3000 will presumably send http requests to the backend (port 4000)
 const server = app.listen(port, () => {
   console.log(`server is running on port ${port}`);
 });
 
 app.get("/", (req, res) => {
-  console.log("get request to default page successful");
-});
-
-//probably need to make this my own route
-app.get("/commission-status", (req, res) => {
-  //make a request to mongodb, getting values
+  res.send("get request to default page successful");
 });
