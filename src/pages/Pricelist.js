@@ -12,16 +12,14 @@ const Pricelist = () => {
   const imageRef = useRef(0);
 
   return (
-    <div>
-      <ImagePopup imgPopupObj={imagePopup} imgPopupState={setImagePopup} />
+    <div className="pricelist">
       <Mobile />
-      <button
-        onClick={() => {
-          setImagePopup(true);
-        }}
-      >
-        pop up
-      </button>
+      <h2>pricelist</h2>
+      <h3>vtuber model</h3>
+      <h3>portrait/bust/fullbody</h3>
+      <h3>illustration</h3>
+      <h3>character design</h3>
+      <h3>skeb-style</h3>
       <Footer />
     </div>
   );

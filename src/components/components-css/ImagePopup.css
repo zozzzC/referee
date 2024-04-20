@@ -6,12 +6,11 @@ body {
 .image-popup-screen { 
     flex: auto;
     background-color: rgb(255, 255, 255, 0.9);
+    outline: 10px solid green;
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     display: flex;
-    margin: 0;
-    border: 0;
   }
   
   .x-button { 
@@ -32,22 +31,19 @@ body {
   }
 
 .image-popup-item { 
+  /* box-sizing: content-box; */
+  /* margin: 10px 10px 10px 10px; */
   display: flex;
   width: 100%;
   border: none;
-  margin: 0;
-  padding: 0;
   justify-content: center;
   padding-left: 0;
-  
+  margin: 10px 10px 10px 10px;
 }
 
 .image-popup-item img {
-  margin: 0;
-  border-width: 0;
-  padding: 0;
-  justify-content: center;
   border-radius: 10px;
+  justify-content: center;
   object-fit: contain;
   max-width: 100%;
  } 
