@@ -56,6 +56,7 @@ const Portfolio = () => {
   let imagePopupSrc = useRef("");
   let imagePopupDesc = useRef("");
 
+  //TODO: change from using imageIndex to the actual ID inside of the object.
   function showImagePopup(imageIndex) {
     //first we want to set the image popup props, the values of the source image, etc.
     //props is going to be the value of the index in displayimg
@@ -78,6 +79,7 @@ const Portfolio = () => {
         {displayImg.map((img, index) => (
           <PortfolioImg
             index={index}
+            key={img.key}
             route={img.route}
             desc={img.desc}
             setImagePopup={showImagePopup}
