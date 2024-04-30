@@ -6,8 +6,6 @@ const ImagePopup = (props) => {
   return (
     <div className="image-popup-screen">
       <div className="image-popup-item">
-        {/* TODO: This button is causing a left margin for the image. */}
-
         <button onClick={() => props.imgPopupState(false)}>
           <div className="x-button">
             <LucideXCircle />
@@ -18,7 +16,6 @@ const ImagePopup = (props) => {
           desc={props.images}
           style={{ animation: "fadeIn 0.5s" }}
         />
-        {/* <h1>{props.desc}</h1> */}
       </div>
     </div>
   );
