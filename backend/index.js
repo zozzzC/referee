@@ -3,12 +3,16 @@ const cors = require("cors");
 const session = require("express-session");
 const cookie = require("cookie-parser");
 const bodyParser = require("body-parser");
-const passport = require("passport");
+const mongoose = require("mongoose");
+//TODO: fix issue where passport does not seem to work (probably need to initialize sessions first?)
+// const passport = require("passport");
 
 //router
 const router = require("./routes/router");
 
 const app = express();
+
+mongoose.connect("");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,9 +26,8 @@ const corsOptions = {
 app.use(express.static("public"));
 app.use(cors(corsOptions));
 app.use("/", router);
-
-app.use(passport.initialize());
-app.listen(passport.session());
+// app.use(passport.initialize());
+// app.listen(passport.session());
 
 const port = 8080;
 

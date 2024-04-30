@@ -24,4 +24,10 @@ router.get("/", (req, res) => {
   res.json(commissionStates);
 });
 
+router.get("/:id", (req, res) => {
+  const { id } = req.params.id;
+  const csItem = commissionStates.find((i) => i.id === id);
+  res.send(csItem);
+});
+
 module.exports = router;

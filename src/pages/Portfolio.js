@@ -56,7 +56,7 @@ const Portfolio = () => {
   let imagePopupSrc = useRef("");
   let imagePopupDesc = useRef("");
 
-  //TODO: change from using imageIndex to the actual ID inside of the object.
+  //TODO: change from using imageIndex to the actual ID inside of the object using displayImg.find((i) => i.id === id)
   function showImagePopup(imageIndex) {
     //first we want to set the image popup props, the values of the source image, etc.
     //props is going to be the value of the index in displayimg
