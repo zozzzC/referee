@@ -4,6 +4,7 @@ const {
   retrieveArtImages,
   updateArtImage,
   putArtImage,
+  deleteArtImage,
 } = require("../controllers/artImages");
 const router = express.Router();
 
@@ -121,21 +122,37 @@ router.put("/:id", async (req, res) => {
   console.log(req.body);
   try {
     const patchedCsItem = await putArtImage(id, req.body);
-    if (!patchedCsItem) return res.status(404).send(`ID not found.`);
-    return res.status(204);
+    if (!patchedCsItem) return res.status(400).send(`ID not found.`);
+    //status() sets a HTTP status on the response (as a Javascript object on the server side).
+    //sendStatus() sets the status and sends it to the client.
+    return res.sendStatus(200);
   } catch (err) {
-    return res.status(422).send(err.message);
+    return res.status(400).send(err.message);
   }
 });
 
 router.patch("/:id", async (req, res) => {
-  const id = parseInt(req.params.id);
+  const parseId = parseInt(req.params.id);
+
   try {
-    const patchedCsItem = await updateArtImage(id, req.body);
-    if (!patchedCsItem) return res.status(404).send(`ID not found.`);
-    return res.status(204);
+    const patchedCsItem = await updateArtImage(parseId, req.body);
+    console.log(patchedCsItem);
+    if (patchedCsItem === false) return res.status(400).send(`ID not found.`);
+    return res.sendStatus(200);
   } catch (err) {
-    return res.status(422).send(err.message);
+    return res.status(400).send(err.message);
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  const parseId = parseInt(req.params.id);
+
+  try {
+    const deletedCsItem = await deleteArtImage(parseId);
+    if (deletedCsItem === false) return res.status(400).send(`ID not found.`);
+    return res.sendStatus(200);
+  } catch (err) {
+    return res.status(404).send(err.message);
   }
 });
 

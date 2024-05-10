@@ -104,9 +104,9 @@ async function createArtImage(artImage) {
 
 async function putArtImage(id, body) {
   const parseId = toInt(id);
-  if (parseId === undefined)
-    throw new Error("ID was not found. (Return undefined)");
+  if (parseId === undefined) throw new Error("ID returned undefined.");
   if (isNaN(parseId)) throw new Error("ID must be an integer.");
+  if (!body) throw new Error("Body must not be null.");
 
   const toPatchCsItem = artImages.findIndex((a) => a.id === parseId);
 
@@ -115,15 +115,31 @@ async function putArtImage(id, body) {
   //a put request updates all the properties, it overrides everything that currently exists in the given ID
   //eg: if i had a property called 'link: here', and the put request body does not have this property, it will be permanently deleted
   artImages[toPatchCsItem] = { id: parseId, ...body };
-  return artImages[toPatchCsItem];
+  return true;
 }
 
 async function updateArtImage(id, body) {
-  if (id === undefined) throw new Error("ID was not found.");
+  if (id === undefined) throw new Error("ID returned undefined.");
   if (isNaN(id)) throw new Error("ID must be an integer.");
 
   const toPatchCsItem = artImages.findIndex((a) => a.id === id);
+  if (toPatchCsItem === -1) throw new Error("ID was not found. (Return -1)");
 
+  //unlike put, this only partially updates the given ID eg: only a few params in the object
+  //any current field values must not be changed
+  //this works bcs we get what is currently in the given index of artImages, spread it (make a copy)
+  //and then spread the body.
+  //since there can only be one key, when we spread body afterwards, it will override the current values in
+  //artImage[toPatchCsItem], but only override what keys are the same in the body and in the existing object
+  artImages[toPatchCsItem] = { ...artImages[toPatchCsItem], ...body };
+  return true;
+}
+
+async function deleteArtImage(id) {
+  if (isNaN(id)) return res.sendStatus(400);
+  const artImage = artImages.findIndex((a) => a.id === id);
+  if (artImage === -1) throw new Error("ID was not found.");
+  artImages.splice(artImage);
   return true;
 }
 
@@ -132,4 +148,5 @@ module.exports = {
   createArtImage,
   updateArtImage,
   putArtImage,
+  deleteArtImage,
 };
