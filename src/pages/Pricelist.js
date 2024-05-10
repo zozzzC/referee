@@ -14,7 +14,6 @@ const Pricelist = () => {
   return (
     <div className="pricelist">
       <Mobile />
-      <h2>pricelist</h2>
       <h3>vtuber model</h3>
       <h3>portrait/bust/fullbody</h3>
       <h3>illustration</h3>

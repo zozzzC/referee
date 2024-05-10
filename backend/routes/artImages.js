@@ -1,9 +1,15 @@
 const express = require("express");
+const {
+  createArtImage,
+  retrieveArtImages,
+  updateArtImage,
+  putArtImage,
+} = require("../controllers/artImages");
 const router = express.Router();
 
-let artImages = [
+const artImages = [
   {
-    key: 0,
+    id: 0,
     route: "",
     desc: "meteor shower art",
     dateMade: "2024-04-23T23:21:02.072Z",
@@ -27,7 +33,7 @@ let artImages = [
   },
 
   {
-    key: 1,
+    id: 1,
     route: "",
     desc: "romw art",
     dateMade: "2024-04-23T23:21:02.072Z",
@@ -50,9 +56,9 @@ let artImages = [
     ],
   },
   {
-    key: 2,
+    id: 2,
     route: "",
-    desc: "meteor shower art",
+    desc: "kaveh art",
     dateMade: "2024-04-23T23:21:02.072Z",
     info: [
       {
@@ -74,22 +80,63 @@ let artImages = [
   },
 ];
 
-//:val is a param in req, which corresponds to true or false.
-router.get("/", (req, res) => {
-  res.json(artImages);
+router.get("/", async (req, res) => {
+  console.log(req.query);
+
+  const {
+    query: { filter, value },
+  } = req;
+
+  if (!filter && !value) {
+    const artImage = await retrieveArtImages();
+    return res.json(artImage);
+  }
+
+  //square brackets means to get the property with that name--IE: if filter = desc, then for each image get the desc and check if it inclues the value we are looking for
+  if (filter && value)
+    return res.json(artImages.filter((image) => image[filter].includes(value)));
 });
 
-router.get("/:id", (req, res) => {
-  const { id } = req.params.id;
-  const image = artImages.find((i) => i.id === id);
-  res.send(image);
-});
-
-router.post("/create-cs-item", (req, res) => {
+router.get("/:id", async (req, res) => {
+  const id = parseInt(req.params.id);
   try {
-  } catch (err) {}
+    const image = await retrieveArtImages(id);
+    return res.status(201).json(image);
+  } catch (err) {
+    return res.status(400).send(err.message);
+  }
 });
 
-//query paramaters
+router.post("/", async (req, res) => {
+  try {
+    const newCsItem = await createArtImage(req.body);
+    return res.status(201).json(newCsItem);
+  } catch (err) {
+    return res.status(400).send(err.message);
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  const id = parseInt(req.params.id);
+  console.log(req.body);
+  try {
+    const patchedCsItem = await putArtImage(id, req.body);
+    if (!patchedCsItem) return res.status(404).send(`ID not found.`);
+    return res.status(204);
+  } catch (err) {
+    return res.status(422).send(err.message);
+  }
+});
+
+router.patch("/:id", async (req, res) => {
+  const id = parseInt(req.params.id);
+  try {
+    const patchedCsItem = await updateArtImage(id, req.body);
+    if (!patchedCsItem) return res.status(404).send(`ID not found.`);
+    return res.status(204);
+  } catch (err) {
+    return res.status(422).send(err.message);
+  }
+});
 
 module.exports = router;

@@ -73,7 +73,7 @@ const Portfolio = () => {
           desc={imagePopupDesc.current}
           imgPopupState={setImagePopup}
         />
-      ) : null}
+      ) : undefined}
       <Mobile />
       <Masonry columnsCount={columnsCount} gutter="10px">
         {displayImg.map((img, index) => (

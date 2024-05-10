@@ -20,14 +20,18 @@ let commissionStates = [
 ];
 
 //:val is a param in req, which corresponds to true or false.
-router.get("/", (req, res) => {
-  res.json(commissionStates);
+router.get("/", async (req, res) => {
+  await res.json(commissionStates);
 });
 
 router.get("/:id", (req, res) => {
   const { id } = req.params.id;
   const csItem = commissionStates.find((i) => i.id === id);
   res.send(csItem);
+
+  if (!csItem) {
+    res.sendStatus(404);
+  }
 });
 
 module.exports = router;

@@ -4,7 +4,9 @@ const session = require("express-session");
 const cookie = require("cookie-parser");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-//TODO: fix issue where passport does not seem to work (probably need to initialize sessions first?)
+require("dotenv").config();
+
+//TODO: fix issue where passport does not seem to work (probably something to do with sessions)
 // const passport = require("passport");
 
 //router
@@ -12,8 +14,12 @@ const router = require("./routes/router");
 
 const app = express();
 
-mongoose.connect("");
+// mongoose.connect("");
 
+mongoose.connect(process.env.MONGODB_URI);
+
+app.use(express.json());
+app.use(express.urlencoded());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
