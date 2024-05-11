@@ -81,6 +81,23 @@ const artImages = [
   },
 ];
 
+//example of middleware
+const resolveIndexByUserId = (req, res, next) => {
+  const parseId = parseInt(req.params.id);
+
+  if (parseId === null) return res.status(400).send("ID returned undefined.");
+  if (isNaN(parseId)) return res.status(400).send("ID must be an integer.");
+
+  const indexArt = artImages.findIndex((a) => a.id === parseId);
+
+  if (indexArt === -1)
+    return res.status(404).send("ID was not found. (Return -1)");
+
+  req.parseId = parseId;
+  req.indexArt = indexArt;
+  next();
+};
+
 router.get("/", async (req, res) => {
   console.log(req.query);
 
@@ -98,10 +115,9 @@ router.get("/", async (req, res) => {
     return res.json(artImages.filter((image) => image[filter].includes(value)));
 });
 
-router.get("/:id", async (req, res) => {
-  const id = parseInt(req.params.id);
+router.get("/:id", resolveIndexByUserId, async (req, res) => {
   try {
-    const image = await retrieveArtImages(id);
+    const image = await retrieveArtImages(req.parseId);
     return res.status(201).json(image);
   } catch (err) {
     return res.status(400).send(err.message);
@@ -117,38 +133,40 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
-  const id = parseInt(req.params.id);
-  console.log(req.body);
+router.put("/:id", resolveIndexByUserId, async (req, res) => {
   try {
-    const patchedCsItem = await putArtImage(id, req.body);
+    const patchedCsItem = await putArtImage(
+      req.parseId,
+      req.indexArt,
+      req.body
+    );
     if (!patchedCsItem) return res.status(400).send(`ID not found.`);
     //status() sets a HTTP status on the response (as a Javascript object on the server side).
     //sendStatus() sets the status and sends it to the client.
-    return res.sendStatus(200);
+    return res.status(200).json(patchedCsItem);
   } catch (err) {
     return res.status(400).send(err.message);
   }
 });
 
-router.patch("/:id", async (req, res) => {
-  const parseId = parseInt(req.params.id);
-
+router.patch("/:id", resolveIndexByUserId, async (req, res) => {
   try {
-    const patchedCsItem = await updateArtImage(parseId, req.body);
+    const patchedCsItem = await updateArtImage(
+      req.parseId,
+      req.indexArt,
+      req.body
+    );
     console.log(patchedCsItem);
-    if (patchedCsItem === false) return res.status(400).send(`ID not found.`);
-    return res.sendStatus(200);
+    if (!patchedCsItem) return res.status(400).send(`ID not found.`);
+    return res.status(200).json(patchedCsItem);
   } catch (err) {
     return res.status(400).send(err.message);
   }
 });
 
-router.delete("/:id", async (req, res) => {
-  const parseId = parseInt(req.params.id);
-
+router.delete("/:id", resolveIndexByUserId, async (req, res) => {
   try {
-    const deletedCsItem = await deleteArtImage(parseId);
+    const deletedCsItem = await deleteArtImage(req.parseId);
     if (deletedCsItem === false) return res.status(400).send(`ID not found.`);
     return res.sendStatus(200);
   } catch (err) {

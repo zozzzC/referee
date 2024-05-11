@@ -54,12 +54,12 @@ const priceOption = [
     id: 0,
     name: "fullbody",
     price: "$800",
-    desc: "A R2R fullbody Vtuber model that has 5 free sticker expressions."
+    desc: "A R2R fullbody Vtuber model that has 5 free sticker expressions.",
   },
   {
     id: 1,
     name: "halfbody",
     price: "$500",
-    desc: "A R2R halfbody Vtuber model that has 3 free sticker expressions. The hands are cut off for a halfbody model!"
-  }
-]
+    desc: "A R2R halfbody Vtuber model that has 3 free sticker expressions. The hands are cut off for a halfbody model!",
+  },
+];

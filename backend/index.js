@@ -14,8 +14,6 @@ const router = require("./routes/router");
 
 const app = express();
 
-// mongoose.connect("");
-
 mongoose.connect(process.env.MONGODB_URI);
 
 app.use(express.json());

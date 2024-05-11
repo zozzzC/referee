@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 const CreateBlogPost = ({ type }) => {
   //when delete is clicked we want to run an async function that pushes our data into the DB
