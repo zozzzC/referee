@@ -6,7 +6,7 @@ import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import Portfolio from "./pages/Portfolio";
 import Pricelist from "./pages/Pricelist";
-import useWindowSize from "./hooks/useWindowResize";
+import FormPage from "./pages/FormPage";
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/pricelist" element={<Pricelist />} />
+          <Route path="/form" element={<FormPage />} />
         </Routes>
       </Router>
     </div>
