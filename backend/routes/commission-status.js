@@ -19,7 +19,6 @@ let commissionStates = [
   },
 ];
 
-//:val is a param in req, which corresponds to true or false.
 router.get("/", async (req, res) => {
   await res.json(commissionStates);
 });
