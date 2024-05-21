@@ -11,20 +11,18 @@
     "lucide-react": "^0.364.0",
     "masonry-layout": "^4.2.2",
     "nodemon": "^3.1.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-responsive-masonry": "^2.2.0",
     "react-router-dom": "^6.22.3",
-    "react-scripts": "^3.0.1",
+    "vite-plugin-require": "^1.1.14",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
-    "test": "react-scripts test",
-    "server": "nodemon index.js",
-    "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "proxy": "http://localhost:4000/",
   "eslintConfig": {
@@ -46,6 +44,9 @@
     ]
   },
   "devDependencies": {
-    "json-server": "^1.0.0-alpha.23"
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@vitejs/plugin-react": "^4.2.1",
+    "json-server": "^1.0.0-alpha.23",
+    "vite": "^5.2.11"
   }
 }

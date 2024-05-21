@@ -7,6 +7,9 @@ import Mobile from "../components/Mobile";
 const commState = "open";
 const commDate = "march 20, 2024";
 const updateDate = "march 19, 2024";
+import zozchuupfp from "../images/zozchuupfp.png"
+import insta from "../images/logo/instagram.svg"
+import twitter from "../images/logo/twitter.svg"
 
 let commButton = "apply now!";
 
@@ -32,17 +35,17 @@ const Homepage = () => {
           <div className="home-left">
             <div className="home-pfp">
               <img
-                src={require("../images/zozchuupfp.png")}
+                src={zozchuupfp}
                 alt="zozchuu-pfp"
               />
             </div>
             <div className="home-socials">
               <img
-                src={require("../images/logo/instagram.svg")}
+                src={insta}
                 alt="instagram link"
               />
               <img
-                src={require("../images/logo/twitter.svg")}
+                src={twitter}
                 alt="twitter link"
               />
             </div>

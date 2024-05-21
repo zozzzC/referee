@@ -1,13 +1,13 @@
 import React from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
-import Home from "./pages/Home";
-import Contact from "./pages/Contact";
-import Blog from "./pages/Blog";
-import Portfolio from "./pages/Portfolio";
-import Pricelist from "./pages/Pricelist";
-import FormPage from "./pages/FormPage";
-import Register from "./pages/Register";
+import Home from "./pages/Home.jsx";
+import Contact from "./pages/Contact.jsx";
+import Blog from "./pages/Blog.jsx";
+import Portfolio from "./pages/Portfolio.jsx";
+import Pricelist from "./pages/Pricelist.jsx";
+import FormPage from "./pages/FormPage.jsx";
+import Register from "./pages/Register.jsx";
 
 function App() {
   return (

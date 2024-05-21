@@ -1,6 +1,6 @@
 import React from "react";
 import useWindowSize from "../hooks/useWindowResize";
-import Hamburger from "../components/Hamburger";
+import Hamburger from "./Hamburger";
 import Navbar from "../components/Navbar";
 
 const Mobile = () => {

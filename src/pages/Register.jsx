@@ -1,7 +1,7 @@
 import React from "react";
 import "../index.css";
-import useWindowSize from "../hooks/useWindowResize";
-import Mobile from "../components/Mobile";
+import useWindowSize from "../hooks/useWindowResize.jsx";
+import Mobile from "../components/Mobile.jsx";
 import axios from "axios";
 
 const Register = () => {

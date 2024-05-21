@@ -3,6 +3,11 @@ import CarouselImg from "./CarouselImg";
 import "../index.css";
 import { useState, useEffect, useRef } from "react";
 import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
+import meteorShower from "../images/meteor-shower.png";
+import romw from "../images/romw.png";
+import kavehSad from "../images/kaveh-sad.png";
+import furinaArt from "../images/furina-bust.png";
+import oldMan from "../images/man-sketch.png";
 
 const Carousel = () => {
   const [index, setIndex] = useState(0);
@@ -12,23 +17,23 @@ const Carousel = () => {
   const displayImg = [
     {
       key: 0,
-      route: require(`../images/meteor-shower.png`),
+      route: meteorShower,
       desc: "meteor shower art",
     },
 
     {
       key: 1,
-      route: require(`../images/romw.png`),
+      route: romw,
       desc: "romw art",
     },
     {
       key: 2,
-      route: require(`../images/kaveh-sad.png`),
+      route: kavehSad, 
       desc: "kaveh art",
     },
     {
       key: 3,
-      route: require(`../images/man-sketch.png`),
+      route: oldMan,
       desc: "old man art",
     },
   ];
