@@ -15,12 +15,13 @@ const Form = () => {
   useEffect(() => {
     SelectCommissionType();
     SelectContactType();
-  }, []);
+  }, [radioOptions]);
 
   const Price = () => {
     lastPrice.current = price;
   };
 
+  //TODO: fix issue where i for some reason need to click on halfbody/fullbody options TWICE for it to go through 
   const SelectCommissionType = () => {
     console.log(comSelect);
     if (comSelect === null) {
@@ -29,34 +30,39 @@ const Form = () => {
     if (comSelect === "vtuber") {
       return (
         <>
-          <p>model type:</p>
-          <input
-            name="selectModelType"
-            type="radio"
-            value="halfbody"
-            onChange={() => setRadioOptions("halfbody")}
-          />
-          halfbody $500USD
-          <input
-            name="selectModelType"
-            type="radio"
-            value="fullbody"
-            onChange={() => setRadioOptions("fullbody")}
-          />
-          fullbody $700USD
-          <p>
-            upload your vtuber PDF file (or link your shared Google
-            Drive/Dropbox)
-          </p>
-          <button>select file</button>
-          <input>File Link:</input>
-          <p>Additional add-ons:</p>
-          <p>Total</p>
-          <p>
-            Please note: Vtuber models are currently on {vtuberModelStatus}.
-            Your commission may take longer than expected. Please check my
-            Trello for more information.
-          </p>
+        <p>model type:</p>
+          
+        <input
+          name="selectModelType"
+          type="radio"
+          value="halfbody"
+          onChange={() => setRadioOptions("halfbody")}
+        />
+        <label>halfbody $500USD</label>
+
+        <input
+          name="selectModelType"
+          type="radio"
+          value="fullbody"
+          onChange={() => setRadioOptions("fullbody")}
+        />
+
+        <label>fullbody $700USD</label>
+
+
+        <p>link your shared Google Drive/Dropbox</p>
+
+        <p>additional add-ons:</p>
+
+        
+        
+
+
+        <p>total</p>
+        <p>
+            please note: vtuber models are currently on .
+            your commission may take longer than expected.        </p>
+      
         </>
       );
     } else if (comSelect === "illustration") {
