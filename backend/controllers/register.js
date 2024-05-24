@@ -14,13 +14,14 @@ const tempUsers = [
 //TODO: request validation has not been implemented yet.
 async function createNewUser(user) {
   const { username, email, password } = user;
+  var hash = "";
 
   bcrypt.genSalt(salt, (err, s) => {
     if (err) throw new Error("Salt unsuccessful.");
-  });
-
-  const hash = await bcrypt.hash(password, s, (err, hash) => {
-    if (err) throw new Error("Hash unsuccessful.");
+    bcrypt.hash(password, s, (err, h) => {
+      if (err) throw new Error("Hash unsuccessful.");
+      hash = h;
+    });
   });
 
   //check if email exists
@@ -34,6 +35,7 @@ async function createNewUser(user) {
     email: email,
     password: hash,
   });
+
   return user;
 }
 

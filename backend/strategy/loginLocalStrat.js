@@ -5,10 +5,26 @@ const LocalStrategy = require("passport-local");
 const mockUsers = [
   {
     id: 0,
-    username: "zozchuu",
-    pass: "pass",
+    username: "me",
+    email: "mail@mail.com",
+    password: "hashhere",
   },
 ];
+passport.serializeUser((user, done) => {
+  //runs once during login
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  //on subsequent requests while logged in, this will be called
+  try {
+    const user = mockUsers.find((user) => user.id === id); //search for user
+    if (!user) throw new Error("Could not find user.");
+    done(null, user);
+  } catch (err) {
+    done(err, null);
+  }
+});
 
 //change from mjs to js -- have to find out how to turn this back to js
 module.exports = passport.use(

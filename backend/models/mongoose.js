@@ -29,17 +29,5 @@ const commissionSchema = new Schema({
   ],
 });
 
-const userSchema = new Schema({
-  username: String,
-  password: String,
-  email: String,
-  commission: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Commission",
-    },
-  ],
-});
 
-const user = mongoosemodel("User", userSchema);
 const commission = mongoosemodel("Commission", commissionSchema);

@@ -12,13 +12,20 @@ const Register = () => {
   const password = useRef("");
 
   async function handleSubmit() { 
-    const res = await axios.post(`http://localhost:8080/register`, { 
-      username: username.current.value,
-      password: password.current.value,
-      email: email.current.value 
-    })
-    console.log(res)
-  }
+    console.log("res")
+    
+    try{ 
+      const res = await axios.post(`http://localhost:8080/register`, { 
+        username: username.current.value,
+        password: password.current.value,
+        email: email.current.value 
+      })
+      return res.data;
+    } catch (err) { 
+      alert(err.response.data)
+    }
+
+ }
 
   return (
     <>

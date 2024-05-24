@@ -1,7 +1,5 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
 const router = express.Router();
-const register = require("../controllers/register.js");
 const passport = require("passport");
 const passportLocal = require("passport-local");
 const { createNewUser } = require("../controllers/register");
