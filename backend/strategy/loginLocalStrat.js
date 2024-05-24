@@ -1,8 +1,6 @@
 //TODO: may need to move this somewhere else...
-const express = require("express");
 const passport = require("passport");
-const session = require("express-session");
-const { Strategy } = require("passport-local");
+const LocalStrategy = require("passport-local");
 
 const mockUsers = [
   {
@@ -12,21 +10,17 @@ const mockUsers = [
   },
 ];
 
-passport.use(session);
-
 //change from mjs to js -- have to find out how to turn this back to js
-const pass = passport.use(
-  new Strategy((username, password, cb) => {
+module.exports = passport.use(
+  new LocalStrategy((username, password, done) => {
     try {
       const findUser = mockUsers.find((user) => user.username === username);
       if (!findUser) throw new Error("Username not found.");
       if (findUser.password !== password)
         throw new Error("Wrong password, please try again.");
-      cb(null, findUser);
+      done(null, findUser);
     } catch (err) {
-      cb(err, null);
+      done(err, null);
     }
   })
 );
-
-module.exports = pass;

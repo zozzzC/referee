@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LoginButton from "./LoginButton";
 
 const Navbar = () => {
   //change to .map for navlinks so that this information can be shared to hamburger
@@ -7,6 +8,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <h1>NAME</h1>
+      <LoginButton/>
       <div className="navlinks">
         <Link className="link-styles" to="/">
           Home

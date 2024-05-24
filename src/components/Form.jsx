@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
+import './components-css/Form.css'
 
 //find a way to use axios to query backend and check which comms are available, then grey out
 //the comms that are not available in 'select commission' radio button
@@ -51,7 +52,7 @@ const Form = () => {
 
 
         <p>link your shared Google Drive/Dropbox</p>
-
+        <input/>
         <p>additional add-ons:</p>
 
         
@@ -90,14 +91,14 @@ const Form = () => {
 
   return (
     <>
-      <label>
-        display name
-        <input type="text" name="display" />
-      </label>
-      <label>
-        public twitter handle (@)
+      <p>display name:</p>
+      <input type="text" name="display" />
+
+
+        <p>public twitter handle (@)</p>
         <input type="text" name="socmed" />
-      </label>
+
+
       <p>where would you like me to contact you on?</p>
       <input
         name="selectContactType"

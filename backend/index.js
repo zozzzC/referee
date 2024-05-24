@@ -8,21 +8,30 @@ const passport = require("passport");
 const strat = require("./strategy/loginLocalStrat.js");
 require("dotenv").config();
 
-//router
-const router = require("./routes/router");
-
 const app = express();
 // app.use(cookie);
 mongoose.connect(process.env.MONGODB_URI);
-
+app.use(
+  session({
+    secret: process.env.COOKIE_SECRET,
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+      maxAge: 6 * 100000000, //some arbitrary number i dont know how long to set this to yet
+    },
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded());
+//cont this
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
+//router
+const router = require("./routes/router");
 const corsOptions = {
   origin: "*",
   credentials: true,
@@ -43,5 +52,6 @@ const server = app.listen(port, () => {
 });
 
 app.get("/", (req, res) => {
+  req.session.visited = true;
   res.send("get request to default page successful");
 });

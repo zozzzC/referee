@@ -13,6 +13,12 @@ import romw from "../images/romw.png";
 import kavehSad from "../images/kaveh-sad.png";
 import furinaArt from "../images/furina-bust.png";
 import oldMan from "../images/man-sketch.png";
+import ciel from "../images/ciel.png";
+import elf from "../images/elfboi.png"
+import hcflower from "../images/hc-flower.png"
+import hccny from "../images/hua-cheng-cny.png"
+import overhead from "../images/overhead.png"
+import vmodel1 from "../images/vmodel1.png"
 
 
 
@@ -46,6 +52,11 @@ const Portfolio = () => {
       route: oldMan,
       desc: "old man art",
     },
+    {
+      key: 8,
+      route: hccny,
+      desc: "cny hc"
+    }
   ];
 
   //set the number of columns based on the window size.
@@ -74,13 +85,6 @@ const Portfolio = () => {
 
   return (
     <div className="portfolio">
-      {imagePopup ? (
-        <ImagePopup
-          src={imagePopupSrc.current}
-          desc={imagePopupDesc.current}
-          imgPopupState={setImagePopup}
-        />
-      ) : undefined}
       <Mobile />
       <Masonry columnsCount={columnsCount} gutter="10px">
         {displayImg.map((img, index) => (
@@ -94,6 +98,14 @@ const Portfolio = () => {
         ))}
       </Masonry>
       <Footer />
+      {imagePopup ? (
+        <ImagePopup
+          src={imagePopupSrc.current}
+          desc={imagePopupDesc.current}
+          imgPopupState={setImagePopup}
+        />
+      ) : undefined}
+
     </div>
   );
 };
