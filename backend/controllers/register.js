@@ -1,6 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 
+const salt = 12;
 const tempUsers = [
   {
     id: 0,
@@ -13,9 +14,14 @@ const tempUsers = [
 //TODO: request validation has not been implemented yet.
 async function createNewUser(user) {
   const { username, email, password } = user;
-  console.log(username + email + password);
 
-  const hash = await bcrypt.hash(password, 16);
+  bcrypt.genSalt(salt, (err, s) => {
+    if (err) throw new Error("Salt unsuccessful.");
+  });
+
+  const hash = await bcrypt.hash(password, s, (err, hash) => {
+    if (err) throw new Error("Hash unsuccessful.");
+  });
 
   //check if email exists
   const foundEmail = tempUsers.find((u) => u.email === email);
