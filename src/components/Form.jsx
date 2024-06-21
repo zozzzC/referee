@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
-import './components-css/Form.css'
+import styles from './components-css/Form.module.css'
 
 //find a way to use axios to query backend and check which comms are available, then grey out
 //the comms that are not available in 'select commission' radio button
@@ -54,11 +54,7 @@ const Form = () => {
         <p>link your shared Google Drive/Dropbox</p>
         <input/>
         <p>additional add-ons:</p>
-
         
-        
-
-
         <p>total</p>
         <p>
             please note: vtuber models are currently on .
@@ -90,7 +86,7 @@ const Form = () => {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <p>display name:</p>
       <input type="text" name="display" />
 
@@ -138,7 +134,7 @@ const Form = () => {
       />
       skeb
       <SelectCommissionType />
-    </>
+    </div>
   );
 };
 

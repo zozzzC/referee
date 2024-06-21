@@ -1,28 +1,24 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const url = prcoess.env.MONGODB_URI;
-
-//TODO: do i need this???
-try {
-  const res = await mongoose.connect(url);
-  if (res) {
-    console.log("mongo connection complete");
-  }
-} catch (err) {
-  console.log("could not connect to mongo");
-}
+const url = process.env.MONGODB_URI;
 
 const userSchema = new Schema({
-  username: String,
-  password: String,
-  email: String,
-  commission: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Commission",
-    },
-  ],
+  username: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
 });
 
 const user = mongoosemodel("User", userSchema);
+
+module.exports = user;

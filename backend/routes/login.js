@@ -3,6 +3,10 @@ const passport = require("passport");
 const router = express.Router();
 const { default: mongoose } = require("mongoose");
 
+//for login, please refer to strategy/loginLocalStrat.js
+
+
+
 router.post("/", passport.authenticate("local"), (req, res) => {
   res.sendStatus(201);
 });

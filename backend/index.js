@@ -5,12 +5,14 @@ const cookie = require("cookie-parser");
 // const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
+const joi = require("joi");
 const strat = require("./strategy/loginLocalStrat.js");
 require("dotenv").config();
 
 const app = express();
 // app.use(cookie);
 mongoose.connect(process.env.MONGODB_URI);
+
 app.use(
   session({
     secret: process.env.COOKIE_SECRET,
@@ -41,12 +43,9 @@ const corsOptions = {
 app.use(express.static("public"));
 app.use(cors(corsOptions));
 app.use("/", router);
-// app.use(passport.initialize());
-// app.listen(passport.session());
 
 const port = 8080;
 
-//8080 is backend port as per above--the frontend is 3000, but 3000 will presumably send http requests to the backend (port 4000)
 const server = app.listen(port, () => {
   console.log(`server is running on port ${port}`);
 });

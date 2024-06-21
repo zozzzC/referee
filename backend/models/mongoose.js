@@ -20,6 +20,7 @@ const artInfoSchema = new Schema({
 //This will likely need more relations later, but for now this is sufficient
 const commissionSchema = new Schema({
   commType: String,
+  status: String,
   lastUpdated: Date,
   user: [
     {
@@ -29,5 +30,6 @@ const commissionSchema = new Schema({
   ],
 });
 
-
 const commission = mongoosemodel("Commission", commissionSchema);
+
+const artInfo = mongoosemodel("ArtInfo", artInfoSchema);
