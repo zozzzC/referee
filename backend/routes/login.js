@@ -5,9 +5,8 @@ const { default: mongoose } = require("mongoose");
 
 //for login, please refer to strategy/loginLocalStrat.js
 
-
-
 router.post("/", passport.authenticate("local"), (req, res) => {
+  req.session.visited = true;
   res.sendStatus(201);
 });
 

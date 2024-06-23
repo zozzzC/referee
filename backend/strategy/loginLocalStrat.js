@@ -26,7 +26,6 @@ passport.deserializeUser((id, done) => {
   }
 });
 
-//change from mjs to js -- have to find out how to turn this back to js
 module.exports = passport.use(
   new LocalStrategy((username, password, done) => {
     try {
@@ -34,6 +33,7 @@ module.exports = passport.use(
       if (!findUser) throw new Error("Username not found.");
       if (findUser.password !== password)
         throw new Error("Wrong password, please try again.");
+      //if this is successful, the user must now have a session
       done(null, findUser);
     } catch (err) {
       done(err, null);

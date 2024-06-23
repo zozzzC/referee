@@ -51,6 +51,5 @@ const server = app.listen(port, () => {
 });
 
 app.get("/", (req, res) => {
-  req.session.visited = true;
   res.send("get request to default page successful");
 });

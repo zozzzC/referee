@@ -1,22 +1,9 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
+const { userRegisterSchema } = require("../helpers/registerSchema");
 
 //for login, please refer to strategy/loginLocalStrat.js
-
-const userSignInSchema = Joi.object({
-  username: Joi.string()
-    .pattern(new RegExp("[a-zA-Z0-9]{3,15}"))
-    .min(3)
-    .max(15)
-    .required(),
-  email: Joi.string().email().required(),
-  password: Joi.string()
-    .pattern(new RegExp("[a-zA-Z0-9]{3,20}"))
-    .min(3)
-    .max(20)
-    .required(),
-});
 
 const salt = 12;
 
@@ -31,7 +18,7 @@ const tempUsers = [
 
 //TODO: request validation has not been implemented yet.
 async function createNewUser(user) {
-  const { error, val } = userSignInSchema.validateAsync(user);
+  const { error, val } = userRegisterSchema.validate(user);
 
   if (error) {
     throw new Error(error.details[0].message);

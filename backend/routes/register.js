@@ -11,6 +11,8 @@ router.get("/", (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const newUser = await createNewUser(req.body);
+    //if this is successful, the user must now have a new session
+    req.session.visited = true;
     return res.status(201).json(newUser);
   } catch (err) {
     return res.status(400).send(err.message);
