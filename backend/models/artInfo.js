@@ -17,19 +17,9 @@ const artInfoSchema = new Schema({
   other: String,
 });
 
-//This will likely need more relations later, but for now this is sufficient
-const commissionSchema = new Schema({
-  commType: String,
-  status: String,
-  lastUpdated: Date,
-  user: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
-  ],
-});
-
-const commission = mongoosemodel("Commission", commissionSchema);
-
 const artInfo = mongoosemodel("ArtInfo", artInfoSchema);
+
+module.exports = {
+  artInfo,
+  artImage,
+};

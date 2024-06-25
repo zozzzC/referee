@@ -1,10 +1,8 @@
 import React from "react";
 import "../index.css";
-import useWindowSize from "../hooks/useWindowResize.jsx";
-import Mobile from "../components/Mobile.jsx";
 import axios from "axios";
-import Footer from "../components/Footer.jsx";
 import { useRef } from "react";
+import styles from "./styles/Register.module.css"
 
 const Register = () => {
   const email = useRef("");
@@ -29,15 +27,27 @@ const Register = () => {
 
   return (
     <>
-      <div className="register-box">
-        <h2>register</h2>
-        <p>email</p>
-        <input ref={email}></input>
-        <p>username</p>
-        <input ref={username}></input>
-        <p>password</p>
-        <input ref={password}></input>
-        <button onClick={handleSubmit}>submit</button>
+      <div className={styles.outside}>
+        <div className={styles.registerBox}>
+
+          <h2>register</h2>
+          <div className={styles.registerBoxItems}>
+            <p>email</p>
+            <input ref={email}></input>
+          </div>
+          <div className={styles.registerBoxItems}>
+            <p>username</p>
+            <input ref={username}></input>
+          </div>
+          <div className={styles.registerBoxItems}>
+          <p>password</p>
+            <input ref={password}></input>
+          </div>
+          <div className={styles.registerBoxItems}>
+          <button onClick={handleSubmit}>submit</button>
+          </div>
+        </div>
+        
       </div>
 
     </>

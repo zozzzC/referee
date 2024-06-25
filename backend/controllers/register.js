@@ -21,6 +21,8 @@ async function createNewUser(user) {
   const { error, val } = userRegisterSchema.validate(user);
 
   if (error) {
+    //TODO: get the type of error so that we know where to put the subtext
+
     throw new Error(error.details[0].message);
   }
 
@@ -39,7 +41,7 @@ async function createNewUser(user) {
   //check if email exists
   const foundEmail = tempUsers.find((u) => u.email === email);
 
-  if (foundEmail) throw new Error("That email has already been registered.");
+  if (foundEmail) throw new Error("*That email has already been registered.");
 
   tempUsers.push({
     id: Date.now.toString(), //temporary id

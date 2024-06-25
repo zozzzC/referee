@@ -1,12 +1,18 @@
-import mongoose from "mongoose";
+import { boolean } from "joi";
+import mongoose, { mongo } from "mongoose";
 const { Schema } = mongoose;
 
 const commissionSchema = new Schema({
-  referenceNumber: Number,
+  referenceNumber: {
+    type: Number,
+    required: true,
+  },
+  lastUpdated: Date,
   user: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      required: true,
     },
   ],
   style: [
@@ -14,13 +20,14 @@ const commissionSchema = new Schema({
       type: String,
       enum: ["Anime", "Semi-Realism", "Painterly"],
       default: "Anime",
+      required: true,
     },
   ],
   commissionType: [
     {
-      type: String,
-      enum: ["Vtuber Model", "Illustration", "Skeb-Style"],
-      default: "Illustration",
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CommissionType",
+      required: true,
     },
   ],
   status: {
@@ -35,16 +42,45 @@ const commissionSchema = new Schema({
       "Completed",
     ],
     default: "Waiting for Confirmation",
+    required: true,
   },
   addOns: [
-    { 
-        type: mongoose.Schema.Types.ObjectId,
-        ref: AddOns
-    }
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "AddOns",
+    },
   ],
-  totalPrice: Number
+  totalPrice: {
+    type: Number,
+    required: true,
+  },
 });
 
-const AddOns = new Schema({
-    
-})
+const addOnsSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  //each add on will have an associated commissionType, OR none at all
+  commissionType: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "CommissionType",
+  },
+});
+
+const commissionTypeSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+});
+
+const commission = mongoosemodel("Commission", commissionSchema);
+const commissionType = mongoosemodel("Commission Type", commissionTypeSchema);
+const addOns = mongoosemodel("Add Ons", addOnsSchema);
+
+module.exports = {
+  commission,
+  commissionType,
+  addOns,
+};
