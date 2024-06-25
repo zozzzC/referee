@@ -22,7 +22,6 @@ async function createNewUser(user) {
 
   if (error) {
     //TODO: get the type of error so that we know where to put the subtext
-
     throw new Error(error.details[0].message);
   }
 
