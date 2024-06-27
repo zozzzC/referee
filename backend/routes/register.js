@@ -4,16 +4,17 @@ const passport = require("passport");
 const passportLocal = require("passport-local");
 const { createNewUser } = require("../controllers/register");
 
-router.get("/", (req, res) => {
-  return "you cant do that!!!";
-});
-
 router.post("/", async (req, res) => {
   try {
     const newUser = await createNewUser(req.body);
     //if this is successful, the user must now have a new session
     req.session.user = req.body;
+    console.log(req.session.user);
+    console.log(req.session.id);
     req.session.visited = true;
+
+    // res.cookie("connect.sid", req.session.id, req.session.cookie);
+
     return res.status(201).json(newUser);
   } catch (err) {
     return res.status(400).send(err.message);

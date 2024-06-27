@@ -39,7 +39,7 @@ const Form = () => {
           value="halfbody"
           onChange={() => setRadioOptions("halfbody")}
         />
-        <label>halfbody $500USD</label>
+        <label>halfbody $450USD</label>
 
         <input
           name="selectModelType"
@@ -48,7 +48,7 @@ const Form = () => {
           onChange={() => setRadioOptions("fullbody")}
         />
 
-        <label>fullbody $700USD</label>
+        <label>fullbody $600USD</label>
 
 
         <p>link your shared Google Drive/Dropbox</p>

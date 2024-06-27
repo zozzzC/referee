@@ -17,9 +17,11 @@ app.use(
   session({
     secret: process.env.COOKIE_SECRET,
     saveUninitialized: false,
-    resave: false,
+    resave: true,
     cookie: {
-      maxAge: 6 * 100000000, //some arbitrary number i dont know how long to set this to yet
+      // secure: true, //bane of my existence
+      // sameSite: "none",
+      maxAge: 6 * 100000000, //some arbitrary number ?
     },
   })
 );
@@ -35,9 +37,11 @@ app.use(passport.session());
 //router
 const router = require("./routes/router");
 const corsOptions = {
-  origin: "*",
+  origin: "http://localhost:5173", //change on deployment pls
   credentials: true,
-  optionSucessStatus: 200,
+  // methods: "GET,PUT,POST,PATCH,DELETE",
+  // allowedHeaders: "Content-Type,Authorization",
+  // // optionSucessStatus: 200,
 };
 
 app.use(express.static("public"));
@@ -51,5 +55,5 @@ const server = app.listen(port, () => {
 });
 
 app.get("/", (req, res) => {
-  res.send("get request to default page successful");
+  res.status(201).json("get to / success");
 });

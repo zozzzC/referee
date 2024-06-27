@@ -12,9 +12,10 @@ router.post("/", passport.authenticate("local"), (req, res) => {
 });
 
 router.get(`/status`, (req, res) => {
-  console.log("status of user: ");
-  console.log(req.session.user); //req.session.user is a custom manually attatched param in the session object
-  console.log(req.session);
+  console.log("cookies: ");
+  console.log(req.headers.cookie);
+  console.log(req.session.user);
+
   if (req.session.user) return res.status(200).send(req.session.user);
   return res.sendStatus(401);
 });

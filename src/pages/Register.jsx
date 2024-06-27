@@ -4,20 +4,23 @@ import axios from "axios";
 import { useRef } from "react";
 import styles from "./styles/Register.module.css"
 
+
+
 const Register = () => {
   const email = useRef("");
   const username = useRef("");
   const password = useRef("");
 
   async function handleSubmit() { 
-    console.log("res")
+    axios.defaults.withCredentials = true;
+
     
     try{ 
       const res = await axios.post(`http://localhost:8080/register`, { 
         username: username.current.value,
         password: password.current.value,
         email: email.current.value 
-      })
+      }, {withCredentials: true})
       return res.data;
     } catch (err) { 
       alert(err.response.data)
