@@ -8,6 +8,7 @@ import Portfolio from "./pages/Portfolio.jsx";
 import Pricelist from "./pages/Pricelist.jsx";
 import FormPage from "./pages/FormPage.jsx";
 import Register from "./pages/Register.jsx";
+import Login from "./pages/Login.jsx";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/pricelist" element={<Pricelist />} />
           <Route path="/form" element={<FormPage />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login/> } />
         </Routes>
       </Router>
     </div>

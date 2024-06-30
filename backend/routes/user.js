@@ -3,9 +3,12 @@ const router = express.Router();
 const { getUserData } = require("../controllers/user.js");
 
 router.get(`/`, async (req, res) => {
-  console.log(req);
-  const user = getUserData(req);
-  return res.status(200).send("yes");
+  try {
+    const user = await getUserData(req);
+    return res.status(200).json(user);
+  } catch (err) {
+    return res.sendStatus(401);
+  }
 });
 
 module.exports = router;

@@ -13,14 +13,16 @@ const app = express();
 // app.use(cookie);
 mongoose.connect(process.env.MONGODB_URI);
 
+const secure = false;
+
 app.use(
   session({
     secret: process.env.COOKIE_SECRET,
     saveUninitialized: false,
     resave: true,
     cookie: {
-      // secure: true, //bane of my existence
-      // sameSite: "none",
+      secure: false, //change to true if production aka bane of my existence
+      sameSite: secure ? "none" : "lax",
       maxAge: 6 * 100000000, //some arbitrary number ?
     },
   })
@@ -37,11 +39,8 @@ app.use(passport.session());
 //router
 const router = require("./routes/router");
 const corsOptions = {
-  origin: "http://localhost:5173", //change on deployment pls
+  origin: "http://localhost:5173", //change on prod
   credentials: true,
-  // methods: "GET,PUT,POST,PATCH,DELETE",
-  // allowedHeaders: "Content-Type,Authorization",
-  // // optionSucessStatus: 200,
 };
 
 app.use(express.static("public"));

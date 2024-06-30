@@ -11,13 +11,10 @@ router.post("/", passport.authenticate("local"), (req, res) => {
   res.sendStatus(201);
 });
 
-router.get(`/status`, (req, res) => {
-  console.log("cookies: ");
-  console.log(req.headers.cookie);
-  console.log(req.session.user);
-
-  if (req.session.user) return res.status(200).send(req.session.user);
-  return res.sendStatus(401);
-});
+// router.get(`/status`, (req, res) => {
+//   //exclude password hash from this
+//   if (req.session.user) return res.status(200).send(req.session.user);
+//   return res.sendStatus(401);
+// });
 
 module.exports = router;

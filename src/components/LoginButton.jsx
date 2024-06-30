@@ -7,16 +7,14 @@ import { useEffect } from "react";
 
 
 //TODO: move this somewhere else
-async function checkIfUserLoggedIn() { 
-
+async function checkIfUserLoggedIn(props) { 
     axios.defaults.withCredentials = true;
-
-    console.log("user login check running")
     try { 
-        //TODO: cookie is already saved but this request does not seem to send the cookie saved in browsser
-
-        const user = await axios.get("http://localhost:8080/login/status", { withCredentials: true})
-        console.log(user)
+        const user = await axios.get("http://localhost:8080/user", { withCredentials: true})
+        //TODO: the following does not seem to execute.
+        const { navigator } = props;
+        //navigate back to homepage if successful
+        navigator("/blog");
     } catch (err) { 
         console.log(err)
     }
@@ -25,7 +23,7 @@ async function checkIfUserLoggedIn() {
 const LoginButton = ({ user }) => {
     const navigate = useNavigate();
     const userLogin = useEffect(() => { 
-        checkIfUserLoggedIn()
+        checkIfUserLoggedIn(navigate)
     }, [])
     return ( 
         <div className="login-icon">

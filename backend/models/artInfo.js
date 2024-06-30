@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const artImageSchema = new Schema({
@@ -7,7 +7,7 @@ const artImageSchema = new Schema({
   dateMade: Date,
 });
 
-const artImage = mongoosemodel("Art", artImageSchema);
+const artImage = mongoose.model("Art", artImageSchema);
 
 const artInfoSchema = new Schema({
   title: String,
@@ -17,7 +17,7 @@ const artInfoSchema = new Schema({
   other: String,
 });
 
-const artInfo = mongoosemodel("ArtInfo", artInfoSchema);
+const artInfo = mongoose.model("ArtInfo", artInfoSchema);
 
 module.exports = {
   artInfo,

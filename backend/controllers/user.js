@@ -3,14 +3,14 @@ const session = require("express-session");
 const mongoose = require("mongoose");
 
 //display name + profile only
-async function getUserData(user) {
-  if (user.session.visited == true) {
+async function getUserData(req) {
+  if (req.session.user) {
     //in the case that this is true, the front-end must be provided with the data that the given logged in user can see (eg: manage existing commissions, status, etc)
-    const { username } = user.session;
-    console.log(username);
-    return true;
+    const { username } = req.session.user;
+    return username;
+  } else {
+    throw new Error("User is not authenticated.");
   }
-  return false;
 }
 
 //lists a paginated version of the users currently existing commissions.

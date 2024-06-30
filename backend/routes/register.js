@@ -9,13 +9,8 @@ router.post("/", async (req, res) => {
     const newUser = await createNewUser(req.body);
     //if this is successful, the user must now have a new session
     req.session.user = req.body;
-    console.log(req.session.user);
-    console.log(req.session.id);
     req.session.visited = true;
-
-    // res.cookie("connect.sid", req.session.id, req.session.cookie);
-
-    return res.status(201).json(newUser);
+    return res.sendStatus(201);
   } catch (err) {
     return res.status(400).send(err.message);
   }

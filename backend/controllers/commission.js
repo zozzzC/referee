@@ -1,7 +1,7 @@
 const express = require(express);
 
 async function createCommission(req) {
-    const { } = req;
+  
 
     if (!req?.id) throw new Error("Commissions require a reference ID.");
     

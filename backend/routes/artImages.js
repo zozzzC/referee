@@ -7,6 +7,7 @@ const {
   deleteArtImage,
 } = require("../controllers/artImages");
 const router = express.Router();
+const artImageSchema = require("../models/artInfo.js")
 
 const artImages = [
   {

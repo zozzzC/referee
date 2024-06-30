@@ -15,6 +15,7 @@ const Pricelist = () => {
     <div className="pricelist">
       <Mobile />
       <h3>vtuber model</h3>
+      
       <h3>portrait/bust/fullbody</h3>
       <h3>illustration</h3>
       <h3>character design</h3>

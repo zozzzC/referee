@@ -8,28 +8,24 @@ const commissionSchema = new Schema({
     required: true,
   },
   lastUpdated: Date,
-  user: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
-  ],
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
   style: [
     {
       type: String,
-      enum: ["Anime", "Semi-Realism", "Painterly"],
+      enum: ["Anime", "Semi-Realism", "Painterly"], //might need to move this to ensure that the selected style is available for the given commission type?
       default: "Anime",
       required: true,
     },
   ],
-  commissionType: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "CommissionType",
-      required: true,
-    },
-  ],
+  commissionType: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Commission Type",
+    required: true,
+  },
   status: {
     type: String,
     enum: [
@@ -47,7 +43,7 @@ const commissionSchema = new Schema({
   addOns: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "AddOns",
+      ref: "Add Ons",
     },
   ],
   totalPrice: {
@@ -64,7 +60,7 @@ const addOnsSchema = new Schema({
   //each add on will have an associated commissionType, OR none at all
   commissionType: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "CommissionType",
+    ref: "Commission Type",
   },
 });
 
@@ -73,14 +69,29 @@ const commissionTypeSchema = new Schema({
     type: String,
     required: true,
   },
+  style: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Style",
+    },
+  ],
 });
 
-const commission = mongoosemodel("Commission", commissionSchema);
-const commissionType = mongoosemodel("Commission Type", commissionTypeSchema);
-const addOns = mongoosemodel("Add Ons", addOnsSchema);
+const styleSchema = new Schema({
+  name: {
+    type: string,
+    required: true,
+  },
+});
+
+const commission = mongoose.model("Commission", commissionSchema);
+const commissionType = mongoose.model("Commission Type", commissionTypeSchema);
+const addOns = mongoose.model("Add Ons", addOnsSchema);
+const style = mongoose.model("Style", styleSchema);
 
 module.exports = {
   commission,
   commissionType,
   addOns,
+  style,
 };
