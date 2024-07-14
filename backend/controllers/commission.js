@@ -1,16 +1,18 @@
-const express = require(express);
+const express = require("express");
+const commissionValidationSchema = require("../helpers/commissionSchema");
 
-async function createCommission(req) {
-  
+async function createCommission(comm) {
+  const { error, val } = await commissionValidationSchema.validateAsync(comm);
 
-    if (!req?.id) throw new Error("Commissions require a reference ID.");
-    
+  if (error) {
+    //TODO: error is not being passed to user: instead, it crashes the app
+    throw new Error(error.details[0].message);
+  }
 
+  return comm;
 }
 
-async function retriveCommission(req) {
-
-}
+async function retriveCommission(req) {}
 
 async function putCommission(req) {}
 

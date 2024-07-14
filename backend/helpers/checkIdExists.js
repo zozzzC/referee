@@ -1,14 +1,41 @@
 const mongoose = require("mongoose");
+const Joi = require("joi");
 
-async function checkIfIdExists(id, schema, schemaName) {
+async function checkIfIdExists(findId, schema, schemaName) {
   //given the id and the schema do a mongoose search to see if that ID exists
-  schemaName = schemaName + "._id";
+  try {
+    const tempUsers = [
+      {
+        id: "0",
+        username: "me",
+        email: "mail@mail.com",
+        password: "hashhere",
+      },
+    ];
+    const idExists = tempUsers.find((tempUser) => tempUser.id === findId);
 
-  const idExists = await schema.findOne({ schemaName: id });
+    // schemaName = schemaName + "._id";
+    // const idExists = await schema.findOne({ schemaName: id });
 
-  if (!idExists) {
-    throw new Error("ID does not exist.");
+    if (idExists === undefined) {
+      return false;
+    }
+
+    return true;
+  } catch (err) {
+    return err;
   }
 }
 
-module.exports = checkIfIdExists;
+const idExists = async (schema, schemaName, value, helpers) => {
+  const exists = await checkIfIdExists(value, schema, schemaName);
+  if (exists) {
+    return value;
+  } else {
+    return helpers.message({
+      external: `Referenced ID ${value} in ${schemaName} was not found.`,
+    });
+  }
+};
+
+module.exports = { idExists };

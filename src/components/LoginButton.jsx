@@ -11,10 +11,8 @@ async function checkIfUserLoggedIn(props) {
     axios.defaults.withCredentials = true;
     try { 
         const user = await axios.get("http://localhost:8080/user", { withCredentials: true})
-        //TODO: the following does not seem to execute.
-        const { navigator } = props;
-        //navigate back to homepage if successful
-        navigator("/blog");
+        //TODO: redo this 
+        
     } catch (err) { 
         console.log(err)
     }

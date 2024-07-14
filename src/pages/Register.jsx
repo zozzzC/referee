@@ -3,11 +3,13 @@ import "../index.css";
 import axios from "axios";
 import { useRef } from "react";
 import styles from "./styles/Register.module.css"
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const email = useRef("");
   const username = useRef("");
   const password = useRef("");
+  const navigator = useNavigate();
 
   async function handleSubmit() { 
     axios.defaults.withCredentials = true;
@@ -19,7 +21,7 @@ const Register = () => {
         password: password.current.value,
         email: email.current.value 
       }, {withCredentials: true})
-      console.log("done")
+      navigator("/");
       return res.data;
     } catch (err) { 
       alert(err.response.data)
