@@ -3,33 +3,42 @@ import { CircleUserRound, LucideCircleUserRound } from "lucide-react";
 import "./components-css/LoginButton.css"
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { useEffect } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { useIsLoggedIn } from "../hooks/useIsLoggedIn";
+
+const LoginButton = () => { 
+    const [user, setUser] = useState(null);
+    const nav = useNavigate();
+
+    useEffect(() => {
 
 
-//TODO: move this somewhere else
-async function checkIfUserLoggedIn(props) { 
-    axios.defaults.withCredentials = true;
-    try { 
-        const user = await axios.get("http://localhost:8080/user", { withCredentials: true})
-        //TODO: redo this 
-        
-    } catch (err) { 
-        console.log(err)
-    }
-}
 
-const LoginButton = ({ user }) => {
-    const navigate = useNavigate();
-    const userLogin = useEffect(() => { 
-        checkIfUserLoggedIn(navigate)
+        const checkUser = async () => { 
+            try { 
+                const loggedIn = await axios.get("http://localhost:8080/user", { withCredentials: true });
+                setUser(loggedIn.data);
+            } catch {
+                setUser(null);
+            }
+        }
+
+        checkUser();
     }, [])
-    return ( 
-        <div className="login-icon">
-            <button onClick={()=> navigate("/register")}>
-                <CircleUserRound size={30}/>
+
+
+    if (!user) { 
+        return ( 
+            <button onClick={()=> nav("/register")} className="login-icon" >
+            <CircleUserRound size={30}/>
             </button>
-        </div>
-     );
+        );
+    }
+
+    return(
+        <p>logged in</p>
+    );
+    
 }
- 
+
 export default LoginButton;

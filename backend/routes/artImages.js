@@ -100,7 +100,6 @@ const resolveIndexByUserId = (req, res, next) => {
 };
 
 router.get("/", async (req, res) => {
-  console.log(req.query);
 
   const {
     query: { filter, value },

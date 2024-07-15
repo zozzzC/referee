@@ -14,9 +14,29 @@ const commissionValidationSchema = Joi.object({
       "any.required": "UserID is required.",
       "any.invalid": "Specified UserID was not found in collection.",
     }),
-  // style: Joi.string().custom(), //unfinished
-  // commissionType: Joi.string().custom(), //unfinished
-  // addOns: Joi.string().custom(), //unfinished
+  style: Joi.string()
+    .external((value, helpers) => idExists(style, "style", value, helpers))
+    .required()
+    .messages({
+      "any.required": "StyleID is required.",
+      "any.invalid": "Specified StyleID was not found in collection.",
+    }), //unfinished
+  commissionType: Joi.string()
+    .external((value, helpers) =>
+      idExists(commType, "commType", value, helpers)
+    )
+    .required()
+    .messages({
+      "any.required": "CommTypeID is required.",
+      "any.invalid": "Specified CommTypeID was not found in collection.",
+    }), //unfinished
+  addOns: Joi.string()
+    .external((value, helpers) => idExists(addOns, "addOns", value, helpers))
+    .required()
+    .messages({
+      "any.required": "AddOnID is required.",
+      "any.invalid": "Specified AddOnID was not found in collection.",
+    }), //unfinished
   status: Joi.string()
     .valid(
       "Waiting for Confirmation",

@@ -5,7 +5,6 @@ async function createCommission(comm) {
   const { error, val } = await commissionValidationSchema.validateAsync(comm);
 
   if (error) {
-    //TODO: error is not being passed to user: instead, it crashes the app
     throw new Error(error.details[0].message);
   }
 

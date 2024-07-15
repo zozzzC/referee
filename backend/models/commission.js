@@ -85,8 +85,8 @@ const styleSchema = new Schema({
 });
 
 const commission = mongoose.model("Commission", commissionSchema);
-const commissionType = mongoose.model("Commission Type", commissionTypeSchema);
-const addOns = mongoose.model("Add Ons", addOnsSchema);
+const commissionType = mongoose.model("CommType", commissionTypeSchema);
+const addOns = mongoose.model("AddOns", addOnsSchema);
 const style = mongoose.model("Style", styleSchema);
 
 module.exports = {

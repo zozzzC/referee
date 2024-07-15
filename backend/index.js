@@ -39,7 +39,7 @@ app.use(passport.session());
 //router
 const router = require("./routes/router");
 const corsOptions = {
-  origin: "http://localhost:5173", //change on prod
+  origin: "http://localhost:5173", //IMPORTANT: change on prod 
   credentials: true,
 };
 

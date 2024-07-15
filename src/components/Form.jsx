@@ -22,7 +22,9 @@ const Form = () => {
     lastPrice.current = price;
   };
 
-  //TODO: fix issue where i for some reason need to click on halfbody/fullbody options TWICE for it to go through 
+  //TODO: fix issue where i for some reason need to click on halfbody/fullbody options TWICE for it to go through
+  //check if this has something to do with useEffect dependencies
+  
   const SelectCommissionType = () => {
     console.log(comSelect);
     if (comSelect === null) {

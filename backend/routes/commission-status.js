@@ -20,7 +20,8 @@ let commissionStates = [
 ];
 
 router.get("/", async (req, res) => {
-  await res.json(commissionStates);
+  const comState = await res.json(commissionStates);
+  return comState;
 });
 
 router.get("/:id", (req, res) => {

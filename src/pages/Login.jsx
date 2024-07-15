@@ -6,7 +6,7 @@ import axios from "axios";
 import Footer from "../components/Footer.jsx";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./styles/register.modules.css" //using register for now since it's pretty much the same style 
+import styles from "./styles/Register.module.css" //using register for now since it's pretty much the same style 
 
 const Login = () => {
   const email = useRef("");
@@ -24,7 +24,11 @@ const Login = () => {
       })
       return res.data;
     } catch (err) { 
+
+      //TODO: depending on the errors shown, we want to display the given errors to the user
+
       alert(err.response.data)
+      return err.response.data;
     }
   }
 
@@ -38,7 +42,9 @@ const Login = () => {
         <input ref={email}></input>
         <p>password</p>
         <input ref={password}></input>
-        <button onClick={handleSubmit}>submit</button>
+        <button onClick={async () => { 
+          const submitted = await handleSubmit();
+        }}>submit</button>
         <button onClick={() => navigate("/register")}>register</button>
       </div>
 

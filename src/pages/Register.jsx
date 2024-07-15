@@ -22,6 +22,7 @@ const Register = () => {
         email: email.current.value 
       }, {withCredentials: true})
       navigator("/");
+      
       return res.data;
     } catch (err) { 
       alert(err.response.data)
