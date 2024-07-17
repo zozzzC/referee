@@ -11,7 +11,7 @@ import zozchuupfp from "../images/zozchuupfp.png"
 import insta from "../images/logo/instagram.svg"
 import twitter from "../images/logo/twitter.svg"
 
-let commButton = "apply now!";
+let commButton = "see what's available";
 
 if (commState === "closed") {
   commButton = "check prices!";

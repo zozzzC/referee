@@ -1,6 +1,7 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import styles from './components-css/Form.module.css'
+import { SelectCommissionType } from "./SelectCommissionType";
 
 //find a way to use axios to query backend and check which comms are available, then grey out
 //the comms that are not available in 'select commission' radio button
@@ -8,68 +9,23 @@ import styles from './components-css/Form.module.css'
 const Form = () => {
   const [comSelect, setComSelect] = useState(null);
   const [contactSelect, setContactSelect] = useState(null);
-  const [radioOptions, setRadioOptions] = useState(null);
   const [price, setPrice] = useState(null);
   const lastPrice = useRef(0);
   const vtuberModelStatus = "waitlist";
 
-  useEffect(() => {
-    SelectCommissionType();
-    SelectContactType();
-  }, [radioOptions]);
+  // useEffect(() => {
+  //   SelectCommissionType();
+  //   SelectContactType();
+  // }, [radioOptions]);
 
   const Price = () => {
     lastPrice.current = price;
   };
 
   //TODO: fix issue where i for some reason need to click on halfbody/fullbody options TWICE for it to go through
-  //check if this has something to do with useEffect dependencies
-  
-  const SelectCommissionType = () => {
-    console.log(comSelect);
-    if (comSelect === null) {
-      return undefined;
-    }
-    if (comSelect === "vtuber") {
-      return (
-        <>
-        <p>model type:</p>
-          
-        <input
-          name="selectModelType"
-          type="radio"
-          value="halfbody"
-          onChange={() => setRadioOptions("halfbody")}
-        />
-        <label>halfbody $450USD</label>
+  //https://medium.com/@akashshukla_1715/preventing-unnecessary-rerendering-of-child-components-in-react-using-usecallback-and-react-memo-34f1423fe263
+  //probably change to useMemo for select commission type, as the parent rerenders every time something in the child changes ? 
 
-        <input
-          name="selectModelType"
-          type="radio"
-          value="fullbody"
-          onChange={() => setRadioOptions("fullbody")}
-        />
-
-        <label>fullbody $600USD</label>
-
-
-        <p>link your shared Google Drive/Dropbox</p>
-        <input/>
-        <p>additional add-ons:</p>
-        
-        <p>total</p>
-        <p>
-            please note: vtuber models are currently on .
-            your commission may take longer than expected.        </p>
-      
-        </>
-      );
-    } else if (comSelect === "illustration") {
-      return <p>illustration</p>;
-    } else if (comSelect === "skeb") {
-      return <p>skeb</p>;
-    }
-  };
 
   const SelectContactType = () => {
     if (contactSelect === null) {
@@ -135,7 +91,8 @@ const Form = () => {
         onChange={() => setComSelect("skeb")}
       />
       skeb
-      <SelectCommissionType />
+
+      <SelectCommissionType comSelect={comSelect}/>
     </div>
   );
 };

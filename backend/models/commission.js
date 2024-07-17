@@ -71,23 +71,25 @@ const commissionTypeSchema = new Schema({
   },
   style: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Style",
+      type: String,
+      enum: ["Anime", "Semi-Realism", "Painterly"], //might need to move this to ensure that the selected style is available for the given commission type?
+      default: "Anime",
+      required: true,
     },
   ],
 });
 
-const styleSchema = new Schema({
-  name: {
-    type: string,
-    required: true,
-  },
-});
+// const styleSchema = new Schema({
+//   name: {
+//     type: string,
+//     required: true,
+//   },
+// });
 
 const commission = mongoose.model("Commission", commissionSchema);
 const commissionType = mongoose.model("CommType", commissionTypeSchema);
 const addOns = mongoose.model("AddOns", addOnsSchema);
-const style = mongoose.model("Style", styleSchema);
+// const style = mongoose.model("Style", styleSchema);
 
 module.exports = {
   commission,

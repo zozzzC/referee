@@ -12,12 +12,10 @@ const LoginButton = () => {
 
     useEffect(() => {
 
-
-
         const checkUser = async () => { 
             try { 
                 const loggedIn = await axios.get("http://localhost:8080/user", { withCredentials: true });
-                setUser(loggedIn.data);
+                setUser(loggedIn);
             } catch {
                 setUser(null);
             }
@@ -26,18 +24,20 @@ const LoginButton = () => {
         checkUser();
     }, [])
 
-
+    //flickering reason: https://stackoverflow.com/questions/73675786/how-to-stop-react-application-from-flashing-on-every-refresh
     if (!user) { 
         return ( 
             <button onClick={()=> nav("/register")} className="login-icon" >
-            <CircleUserRound size={30}/>
+            <p className="sign-in">sign in</p> 
             </button>
         );
     }
 
-    return(
-        <p>logged in</p>
-    );
+    return ( 
+        <button onClick={()=> nav("/register")} className="login-icon" >
+        <CircleUserRound size={30}/>
+        </button>
+    ); 
     
 }
 

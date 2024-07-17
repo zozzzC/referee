@@ -20,10 +20,6 @@
 }
 
 .registerBoxItems { 
-    /* outline: 1px solid green;
-    display: flexbox;
-    width: auto;
-    margin: auto; */
     border: 0;
     padding: 5px;
     margin: 0;
@@ -42,6 +38,16 @@
 }
 
 .registerBoxItems button { 
+        font-size: 12px;
+        padding: 10px 32px; /*width height*/
+        transition: all .1s ease-in;
+        cursor: pointer;
+        border-radius: 10px;
+        background-color:rgb(240, 240, 240);
+}
+
+.registerBoxItems button:hover { 
+    background-color:rgb(223, 223, 223);
 }
 
 * { 
