@@ -1,5 +1,4 @@
-import { boolean } from "joi";
-import mongoose, { mongo } from "mongoose";
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const commissionSchema = new Schema({
@@ -79,21 +78,12 @@ const commissionTypeSchema = new Schema({
   ],
 });
 
-// const styleSchema = new Schema({
-//   name: {
-//     type: string,
-//     required: true,
-//   },
-// });
-
 const commission = mongoose.model("Commission", commissionSchema);
 const commissionType = mongoose.model("CommType", commissionTypeSchema);
 const addOns = mongoose.model("AddOns", addOnsSchema);
-// const style = mongoose.model("Style", styleSchema);
 
 module.exports = {
   commission,
   commissionType,
   addOns,
-  style,
 };

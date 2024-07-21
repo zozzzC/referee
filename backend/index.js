@@ -8,6 +8,7 @@ const passport = require("passport");
 const joi = require("joi");
 const strat = require("./strategy/loginLocalStrat.js");
 require("dotenv").config();
+const { User } = require("./models/user.js");
 
 const app = express();
 // app.use(cookie);
@@ -39,7 +40,7 @@ app.use(passport.session());
 //router
 const router = require("./routes/router");
 const corsOptions = {
-  origin: "http://localhost:5173", //IMPORTANT: change on prod 
+  origin: "http://localhost:5173", //IMPORTANT: change on prod
   credentials: true,
 };
 

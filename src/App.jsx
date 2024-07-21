@@ -9,6 +9,7 @@ import Pricelist from "./pages/Pricelist.jsx";
 import FormPage from "./pages/FormPage.jsx";
 import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx";
+import CreateCommissionForm from "./pages/admin/CreateCommissionForm.jsx";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/form" element={<FormPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login/> } />
+          <Route path="/commission" element={<CreateCommissionForm/>}/>
         </Routes>
       </Router>
     </div>

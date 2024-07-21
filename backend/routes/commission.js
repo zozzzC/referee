@@ -24,24 +24,19 @@ router.get("/", async (req, res) => {
       query: { filter, value },
     } = req;
 
-    if ( !filter && !value) { 
-        const comm = await retriveCommission();
-        return res.json(comm);
+    if (!filter && !value) {
+      const comm = await retriveCommission();
+      return res.json(comm);
     }
 
-    if (filter && value) { 
-      return res.json()
+    if (filter && value) {
+      return res.json();
     }
-
   } catch (err) {
     return res.status(400).send(err.message);
   }
 });
 
-router.get("/:id", async (req, res) => { 
-
-})
-
-router.
+router.get("/:id", async (req, res) => {});
 
 module.exports = router;

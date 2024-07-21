@@ -261,6 +261,11 @@ button {
   border: none;
 }
 
+.portfolio { 
+  display: flex;
+  flex-direction: column;
+}
+
 .portfolio-images img { 
   flex: auto;
   display: inline-block;

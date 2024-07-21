@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 
 const url = process.env.MONGODB_URI;
 
@@ -7,6 +7,7 @@ const userSchema = new Schema({
   username: {
     type: String,
     required: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -17,13 +18,14 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
-  type: {
-    enum: ["Admin", "User"],
+  admin: {
+    type: String,
+    enum: ["User", "Admin"],
     default: "User",
     required: false,
   },
 });
 
-const user = mongoose.model("User", userSchema);
+const User = model("User", userSchema);
 
-module.exports = user;
+module.exports = { User };

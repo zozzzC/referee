@@ -22,11 +22,6 @@ const Form = () => {
     lastPrice.current = price;
   };
 
-  //TODO: fix issue where i for some reason need to click on halfbody/fullbody options TWICE for it to go through
-  //https://medium.com/@akashshukla_1715/preventing-unnecessary-rerendering-of-child-components-in-react-using-usecallback-and-react-memo-34f1423fe263
-  //probably change to useMemo for select commission type, as the parent rerenders every time something in the child changes ? 
-
-
   const SelectContactType = () => {
     if (contactSelect === null) {
       return undefined;
@@ -53,7 +48,9 @@ const Form = () => {
         <input type="text" name="socmed" />
 
 
+
       <p>where would you like me to contact you on?</p>
+      <div className={styles.subcontainer}>
       <input
         name="selectContactType"
         type="radio"
@@ -68,8 +65,13 @@ const Form = () => {
         onChange={() => setContactSelect("discord")}
       />
       discord
+      </div>
       <SelectContactType />
+
       <p>select your type of commission</p>
+
+      <div className={styles.subcontainer}>
+ 
       <input
         name="selectComType"
         type="radio"
@@ -91,8 +93,12 @@ const Form = () => {
         onChange={() => setComSelect("skeb")}
       />
       skeb
+      </div>
 
       <SelectCommissionType comSelect={comSelect}/>
+    
+              
+      <p>total</p>
     </div>
   );
 };

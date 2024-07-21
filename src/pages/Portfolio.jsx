@@ -85,6 +85,10 @@ const Portfolio = () => {
 
   return (
     <div className="portfolio">
+
+      <div className="footer-wrapper"> 
+        
+        </div>
       <Mobile />
       <Masonry columnsCount={columnsCount} gutter="10px">
         {displayImg.map((img, index) => (
@@ -98,6 +102,8 @@ const Portfolio = () => {
         ))}
       </Masonry>
       <Footer />
+
+
       {imagePopup ? (
         <ImagePopup
           src={imagePopupSrc.current}
