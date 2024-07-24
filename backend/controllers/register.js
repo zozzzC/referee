@@ -17,26 +17,16 @@ const tempUsers = [
   },
 ];
 
-//TODO: request validation has not been implemented yet.
 async function createNewUser(user) {
   const { error, val } = userRegisterSchema.validate(user);
 
   console.log(user);
 
   if (error) {
-    //TODO: get the type of error so that we know where to put the subtext
     throw new Error(error.details[0].message);
   }
 
   const { username, email, password } = user;
-
-  // const s = await bcrypt.genSalt(salt, (err, s) => {
-  //   if (err) throw new Error("Salt unsuccessful.");
-  // });
-
-  // const hash = await bcrypt.hash(password, s, (err, h) => {
-  //   if (err) throw new Error("Hash unsuccessful.");
-  // });
 
   const hash = await bcrypt.hash(password, salt);
 
@@ -53,13 +43,6 @@ async function createNewUser(user) {
   });
 
   await newUser.save();
-
-  tempUsers.push({
-    id: Date.now.toString(), //temporary id
-    username: username,
-    email: email,
-    password: hash,
-  });
 
   return user;
 }

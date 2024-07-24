@@ -1,0 +1,14 @@
+.container { 
+    display:flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+}
+
+.subcontainer { 
+    display: flex;
+    box-sizing: border-box;
+    padding: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+}

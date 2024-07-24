@@ -1,4 +1,5 @@
 const express = require("express");
+const { ArtInfo, ArtImage} = require("../models/artInfo")
 
 const artImages = [
   {
@@ -93,6 +94,8 @@ async function createArtImage(artImage) {
   //If the object accessed or function called using this operator is undefined or null,
   //the expression short circuits and evaluates to undefined instead of throwing an error.
   if (!artImage?.id) throw new Error("Art images require a unique ID.");
+
+  
 
   const existingArtImage = artImages.find((a) => a.id === artImage.id);
   if (existingArtImage) throw new Error(`ID '${artImage.id}' already exists.`);

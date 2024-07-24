@@ -11,9 +11,7 @@ async function createCommission(comm) {
   return comm;
 }
 
-async function retriveCommission(req) {
-
-}
+async function retriveCommission(req) {}
 
 async function putCommission(req) {}
 

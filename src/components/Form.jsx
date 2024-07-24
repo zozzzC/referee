@@ -18,6 +18,7 @@ const Form = () => {
   //   SelectContactType();
   // }, [radioOptions]);
 
+
   const Price = () => {
     lastPrice.current = price;
   };
@@ -96,11 +97,28 @@ const Form = () => {
       </div>
 
       <SelectCommissionType comSelect={comSelect}/>
-    
-              
-      <p>total</p>
-    </div>
-  );
+
+    <p>pay via:</p> 
+    <div className={styles.subcontainer}>
+ 
+
+    <input
+        name="selectPayment"
+        type="radio"
+        value="stripe"
+      />
+      stripe
+      <input
+        name="selectPayment"
+        type="radio"
+        value="paypal"
+      />
+      paypal
+      </div> 
+      
+    <p>total</p>
+  </div>
+);
 };
 
 //when user does not select commission type from radio button yet, then dont show any options

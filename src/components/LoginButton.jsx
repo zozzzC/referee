@@ -23,7 +23,7 @@ const LoginButton = () => {
 
     //using useMemo now means that this function is only ran if user is changed, so if the value of user is not
     //changed between rerenders, then it will not run checkUser meaning that flickering is prevented
-    const userChecked = useMemo(checkUser, user);
+    const userChecked = useCallback(checkUser, [user]);
 
     // useEffect(() => {
 

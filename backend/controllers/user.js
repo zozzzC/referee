@@ -13,8 +13,10 @@ async function getUserData(req) {
   }
 }
 
-//lists a paginated version of the users currently existing commissions.
-async function getUserCommission(user) {}
+//lists a paginated version of the users currently existing commissions if user is not admin. if user is admin, then display all commissions available
+async function getUserCommission(user) {
+  
+}
 
 module.exports = {
   getUserData,

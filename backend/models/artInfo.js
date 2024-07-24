@@ -7,7 +7,7 @@ const artImageSchema = new Schema({
   dateMade: Date,
 });
 
-const artImage = mongoose.model("Art", artImageSchema);
+const ArtImage = mongoose.model("Art", artImageSchema);
 
 const artInfoSchema = new Schema({
   title: String,
@@ -17,9 +17,9 @@ const artInfoSchema = new Schema({
   other: String,
 });
 
-const artInfo = mongoose.model("ArtInfo", artInfoSchema);
+const ArtInfo = mongoose.model("ArtInfo", artInfoSchema);
 
 module.exports = {
-  artInfo,
-  artImage,
+  ArtInfo,
+  ArtImage,
 };
