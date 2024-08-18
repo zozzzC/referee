@@ -1,3 +1,5 @@
+NOTE: This is no longer in development.
+
 This is a (soon to be) fullstack MERN website made for myself to facilitate my art commissions. This will be updated as the project continues and features are added.
 
 ## Features
